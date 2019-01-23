@@ -13,7 +13,7 @@
 	<div id=address v-if=!hide.address>
 		<span class=iconify data-icon=mdi-home></span>{{address}}
 	</div>
-	<div id=contact>
+	<div id=contact v-if=!hide.contact>
 		<contact v-for="(item, key) in contacts" :key=key
 			:icon=key
 			:link="item.prefix + item.text"
