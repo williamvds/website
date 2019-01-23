@@ -1,0 +1,170 @@
+:root {
+	--total-width: 1000px;
+	--aside-width: 25%;
+	--aside-margin-horizontal: 32px;
+	--aside-margin-vertical: 16px;
+}
+
+ul {
+	margin: 0;
+}
+
+* {
+	font-family: Noto Sans;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 1.6rem;
+	margin: .6rem 0 .6rem 0;
+}
+
+h2, h3 {
+	font-size: 1.2rem;
+	margin: 0 0 .3rem 0;
+}
+
+p {
+	margin: 0 0 .3rem 0;
+}
+
+#app {
+	margin: 0 auto;
+	max-width: var(--total-width);
+}
+
+/* header */
+
+header {
+	text-align: center;
+}
+
+#sites {
+	font-size: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#contact {
+	font-size: 16px;
+}
+
+#content > a, .contact:not(:last-child), #sites > a {
+	margin-right: 8px;
+}
+
+#contact > a {
+	padding-left: 3px;
+}
+
+#username {
+	vertical-align: middle;
+	font-size: 15px;
+}
+
+.contact {
+	display: inline-block;
+}
+
+/* body */
+
+body {
+	margin: 8px;
+}
+
+main {
+	float: left;
+	max-width: var(--main-width);
+}
+
+section {
+	page-break-inside: avoid;
+}
+
+@media (width < 1000px) {
+	main {
+		float: none;
+		max-width: none;
+	}
+}
+
+.categoryTitle > h1:not(.icon) {
+	margin-left: 16px;
+}
+
+.categoryTitle > *, .organisation {
+	display: inline-block;
+}
+
+.projectTitle > * {
+	display: inline;
+	vertical-align: middle;
+}
+
+.position {
+	margin-bottom: 16px;
+}
+
+.positionTitle {
+	 display: flex;
+	 justify-content: space-between;
+	 align-items: center;
+}
+
+.date {
+	font-size: 1rem;
+	text-align: right;
+}
+
+/* side */
+#skills {
+	float: right;
+	width: var(--aside-width);
+	margin-left: var(--aside-margin-horizontal);
+	margin-bottom: var(--aside-margin-vertical);
+}
+
+@media (width < 1000px) {
+	#skills {
+		float: none;
+		width: auto;
+		margin: 0;
+	}
+
+	#skills h2 {
+		display: table-cell;
+		padding-right: 16px;
+	}
+	
+	#skills p {
+		display: table-cell;
+		text-align: left;
+	}
+
+	#skillsInnerWrap {
+		text-align: center;
+	}
+
+	#skillsInner {
+		display: inline-table;
+		text-align: left;
+	}
+
+	.skill {
+		display: table-row;
+	}
+}
+
+#skills h2 {
+	font-size: 1rem;
+}
+
+#skills p {
+	font-size: .9rem;
+}

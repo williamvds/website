@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>William Vigolo da Silva</title>
+<link rel=stylesheet href=site.css type=text/css charset=utf-8>
+<script src=https://cdn.jsdelivr.net/npm/vue/dist/vue.js></script>
+<script src=https://code.iconify.design/1/1.0.0-rc5/iconify.min.js></script>
+<script src=site.js></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body><div id=app>
+<header v-if=!hide.identity>
+	<h1 id=name v-if=!hide.name>{{name}}</h1>
+	<h2 id=headline v-if=!hide.headline>{{headline}}</h2>
+	<div id=address v-if=!hide.address>
+		<span class=iconify data-icon=mdi-home></span>{{address}}
+	</div>
+	<div id=contact>
+		<contact v-for="(item, key) in contacts" :key=key
+			:icon=key
+			:link="item.prefix + item.text"
+			:text=item.text>
+		</contact>
+	</div>
+	<div id=sites>
+		<account v-for="item in accounts" :key=item.icon
+			:icon=item.icon
+			:link="item.url + username">
+		</account>
+		<span id=username>{{username}}</span>
+	</div>
+</header>
+<main>
+<aside>
+<category id=skills title="Skills" icon=star>
+	<div id=skillsInnerWrap><div id=skillsInner>
+		<skill id=development title="Software development">
+			<p>With C, C++, Java, Python, PHP, JavaScript, Haskell</p>
+		</skill>
+		<skill id=versionControl title="Version control">
+			<p>Using Git, with GitHub and GitLab<br/>Using SVN</p>
+		</skill>
+		<skill id=webFrontend title="Web frontend">
+			<p>With HTML(5), CSS<br/>Experience with Vue.js</p>
+		</skill>
+		<skill id=environment title="Environments">
+			<p>Windows, GNU/Linux, macOS</p>
+		</skill>
+		<skill id=database title="Databases">
+			<p>Using SQL, with MySQL and PostgreSQL</p>
+		</skill>
+	</div></div>
+</category>
+</aside>
+<category id=experience title="Work experience" icon=briefcase>
+	<position id=feral
+		title="Game Programmer (Student Placement)"
+		organisation="Feral Interactive"
+		url="https://feralinteractive.com"
+		start="2018-06-18">
+		<p>As a developer at Feral, I'm working bring more games to macOS and iOS.</p>
+		<p><b>C++</b> is the primary programming language I've used, and this experience with it has given me an in-depth understanding of its concepts, teaching me how to use it effectively to solve problems.<br/>
+		I've been using <b>Xcode</b> to develop games on <b>macOS</b> and <b>iOS</b> giving me a taste of development on these platforms.<br/>
+		Having used <b>LLDB</b> frequently throughout my placement, I've learnt to how to better debug large applications to track down, and ultimately fix issues.<br/>
+		I've also gained the skills needed to jump into and quickly understand new codebases, allowing me to quickly start fixing bugs and implement new features.</p>
+	</position>
+</category>
+<category id=education title=Education icon=school>
+	<position id=uon
+		title="BSc Hons Computer Science with Year in Industry"
+		organisation="University of Nottingham"
+		url="https://nottingham.ac.uk"
+		start="2016-09-26">
+		<p><b>Year averages:</b> 1st: 88%, 2nd: 80.25%</p>
+		<p>I'm in my penultimate year of my course, undergoing an industrial placement.</p>
+		<div v-if=!hide.uonExams>
+		<p>Some exam results I'm proud of:</p>
+		<ul style="list-style: none;">
+			<li><b>Programming Paradigms • 99%</b> As an introduction to the object-oriented and functional programming paradigms, we used Java to make a simple card-matching game, and Haskell to make simple but expressive programs</li>
+			<li><b>Programming & Algorithms • 94%</b> We learnt the usage of pointers and manual memory management through learning C, as well as a variety of data structures and algorithms</li>
+		</ul>
+		</div>
+	</position>
+</category>
+<category id=projects title=Projects icon=code-braces>
+	<project id=fossfund
+		title="fossfund"
+		tech="Python (aiohttp), PostgreSQL, Nginx, HTML5, CSS"
+		:url=`https://github.com/${username}/fossfund`>
+		<p>A website providing a catalog of Free and Open Source Software projects that accept donations.<br/>
+		Users would be able to contribute projects and their donation links, as well as receive regular emails reminding them to donate, suggesting some projects to which they could.</p>
+	</project>
+	<project id=organisations
+		title="Organisations"
+		tech="Lua, MySQL"
+		:url=`https://github.com/${username}/organisations`>
+		<p>An addon for the game Garry's Mod. It allows players to create, join, and manage groups within a game server. Players can set a bulletin, manage their members and the group's bank account.</p>
+	</project>
+	<project id=businessSite
+		title="A business site"
+		tech="PHP, JavaScript, HTML5, CSS"
+		:url=`https://github.com/${username}/business-site`>
+		<p>I personally created a minimal website that a business could use to provide contact information and show off their services</p>
+		<p>It provides support for displaying in multiple languages.<br/>
+		PHP was used for routing and translating the website's content<br/>
+		An adaptive CSS stylesheet makes the website usable on both desktop and mobile devices<br/>
+		Page transitions are performed through AJAX requests</p>
+	</project>
+</category>
+<category id=volunteer title="Volunteer work" icon=charity>
+	<position id=coderdojo
+		title="Volunteer"
+		organisation="CoderDojo"
+		url="https://coderdojo.com"
+		date="2018-11-11">
+		<p>I worked with CoderDojo at an event that introduced young people to technology and software development.<br/>
+		I supported attendees who learned about programming with Scratch and the BBC micro:bit, as well as web design and development using HTML &amp; CSS.</p>
+	</position>
+	<position id=LOSProgrammingClub
+		title="Club Coordinator"
+		organisation="The London Oratory School"
+		url="https://www.london-oratory.org"
+		start="2015-12-01"
+		end="2016-06-01">
+		<p>Throughout the school year, I helped run a weekly Programming Club with about 30 attendees, aged 13–17.</p>
+		<p>I planned and organised activities, and programming challenges for attendees to complete, as well as Raspberry Pis for attendees to tinker with.<br/>
+		During the club, I taught the basics of programming and algorithms and helped attendees with the challenges and activities.</p>
+
+		<p><b>Communication skills:</b> Teaching attendees improved my ability to communicate clearly and concisely</p>
+		<p><b>Teamwork:</b> I and the other club organisers regularly collaborated to prepare activities &amp; challenges, as well as to advertise the club</p>
+		<p><b>Organisation:</b> Planning and organising activities developed my ability to manage my time, as I worked around my studies to help keep the club running</p>
+	</position>
+	<position id=cruk
+		title="Volunteer"
+		organisation="Cancer Research UK"
+		url="https://www.cancerresearchuk.org"
+		start="2014-01-01"
+		end="2014-06-20">
+		<p>I worked weekends at a local Cancer Research UK retail shop with other volunteers.
+		I performed several roles, including working at the till, organising the store, and managing stock.</p>
+
+		<p><b>Communication skills:</b> Working at the till boosted my communication and people skills while ensuring that customers had a good experience with the charity</p>
+		<p><b>Teamwork & organisation:</b>Working with other volunteers strengthened my team-working, as we shared multiple roles and performed different jobs, working together to meet sales goals</p>
+	</position>
+</category>
+<category id=references title=References icon=file-document>
+	<p>Available upon request</p>
+</category>
+</main>
+</div></body>
