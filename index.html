@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel=stylesheet href=style.css type=text/css charset=utf-8>
+<script src=https://cdn.jsdelivr.net/npm/vue/dist/vue.js></script>
+<script src=https://code.iconify.design/1/1.0.0-rc6/iconify.min.js></script>
+<script src=/site.js></script>
+<title>William Vigolo da Silva</title>
+<body><div id=app>
+<header>
+  <h1>{{name}}</h1>
+  <h2>{{headline}}</h2>
+  <div id=links>
+    <a href=cv><span class=iconify data-icon=mdi-file-document></span>Résumé</a>
+    <account v-for="item in accounts" :key=item.icon
+        :icon=item.icon
+        :link="item.url + username"
+        :text=item.name>
+    </account>
+  </div>
+</header>
+</div></body>

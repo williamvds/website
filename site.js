@@ -9,8 +9,8 @@ var data = {
 		web:   {prefix: "https://", text: "williamvds.me"},
 	},
 	accounts: [
-		{site: "LinkedIn", icon: "linkedin-box",  url: "https://linkedin.com/in/"},
-		{site: "GitHub",   icon: "github-circle", url: "https://github.com/"},
+		{name: "LinkedIn", icon: "linkedin-box",  url: "https://linkedin.com/in/"},
+		{name: "GitHub",   icon: "github-circle", url: "https://github.com/"},
 	],
 	hide: {
 		references: window.matchMedia("print"),
@@ -51,7 +51,7 @@ Vue.component("account", {
 	props: ["site", "icon", "link", "text"],
 	template: `
 	<a class=account :title=site :href=link>
-		<span class=iconify :data-icon='\"mdi-\"+icon'></span>
+		<span class=iconify :data-icon='\"mdi-\"+icon'></span>{{text}}
 	</a>`,
 });
 

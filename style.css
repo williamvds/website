@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body, header {
+	min-height: 100vh;
+	overflow: auto;
+}
+
+h1, h2 {
+	margin-bottom: 16px;
+}
+
+header {
+	align-items: center;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.account {
+	display: inline;
+}
+
+#links > * {
+	display: inline;
+	font-size: larger;
+}
+
+#links > *:not(last-child) {
+	margin-right: 16px;
+}
+
+#links > a svg {
+	margin-right: 4px;
+}
