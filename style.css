@@ -33,6 +33,7 @@ header {
 
 .links * {
 	color: #c03233;
+	text-decoration: none;
 }
 
 .links > * {
