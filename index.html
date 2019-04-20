@@ -11,17 +11,17 @@
 	<h1>{{name}}</h1>
 	<h2>{{headline}}</h2>
 	<div id=links>
-	<a href=cv><span class=iconify data-icon=mdi-file-document></span>Résumé</a>
-	<account v-for="item in accounts" :key=item.icon
-		:icon=item.icon
-		:link="item.url + username"
-		:text=item.name>
-	</account>
-	<contact
-		icon=email
-		:link="contacts.email.prefix + contacts.email.text"
-		text="E-mail">
-	</contact>
+		<a href=cv><span class=iconify data-icon=mdi-file-document></span>Résumé</a>
+		<account v-for="item in accounts" :key=item.icon
+			:icon=item.icon
+			:link="item.url + username"
+			:text=item.name>
+		</account>
+		<contact
+			icon=email
+			:link="contacts.email.prefix + contacts.email.text"
+			text="E-mail">
+		</contact>
 	</div>
 </header>
 </div></body>
