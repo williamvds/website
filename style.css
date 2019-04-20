@@ -5,10 +5,6 @@
 	color: #fff;
 }
 
-#links * {
-	color: #c03233;
-}
-
 html, body, header {
 	min-height: 100vh;
 	overflow: auto;
@@ -31,15 +27,26 @@ header {
 	display: inline;
 }
 
-#links > * {
+.links {
+	margin-bottom: 16px;
+}
+
+.links * {
+	color: #c03233;
+}
+
+.links > * {
 	display: inline;
 	font-size: larger;
 }
 
-#links > *:not(last-child) {
+.links > *:not(last-child) {
 	margin-right: 16px;
 }
 
-#links > a svg {
+.links > a svg {
 	margin-right: 4px;
+}
+
+.home .links {
 }

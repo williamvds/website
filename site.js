@@ -8,6 +8,9 @@ var data = {
 		email: {prefix: "mailto:",	text: "william@williamvds.me"},
 		web:   {prefix: "https://", text: "williamvds.me"},
 	},
+	links: {
+		pgp: {text: "PGP key", url: "key.pub", icon: "key"},
+	},
 	accounts: [
 		{name: "LinkedIn", icon: "linkedin-box",  url: "https://linkedin.com/in/"},
 		{name: "GitHub",   icon: "github-circle", url: "https://github.com/"},
@@ -51,6 +54,14 @@ Vue.component("account", {
 	props: ["site", "icon", "link", "text"],
 	template: `
 	<a class=account :title=site :href=link>
+		<span class=iconify :data-icon='\"mdi-\"+icon'></span>{{text}}
+	</a>`,
+});
+
+Vue.component("link", {
+	props: ["icon", "url", "text"],
+	template: `
+	<a class=link :title=text :href=url>
 		<span class=iconify :data-icon='\"mdi-\"+icon'></span>{{text}}
 	</a>`,
 });
