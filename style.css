@@ -2,13 +2,13 @@
 	margin: 0;
 	padding: 0;
 	font-family: Noto Sans, Roboto, sans-serif;
-	color: #fff;
+	color: #333;
 }
 
 html, body, header {
 	min-height: 100vh;
 	overflow: auto;
-	background: #282828;
+	background: #eee;
 }
 
 h1, h2 {
@@ -32,7 +32,7 @@ header {
 }
 
 .links * {
-	color: #c03233;
+	color: #2233bb;
 	text-decoration: none;
 }
 
