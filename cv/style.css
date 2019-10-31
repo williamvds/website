@@ -5,8 +5,10 @@
 	--aside-margin-vertical: 16px;
 }
 
-body {
-	background: #eee;
+@media screen {
+	body {
+		background: #eee;
+	}
 }
 
 ul {
