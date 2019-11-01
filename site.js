@@ -1,6 +1,8 @@
+var print = false;
+
 var data = {
 	name:	  "William Vigolo da Silva",
-	headline: "Software developer, computer person",
+	headline: "Software developer",
 	username: "williamvds",
 	address:  "13 Cian House, 10 Bard Road, London, W10 6TP",
 	contacts: {
@@ -16,7 +18,8 @@ var data = {
 		{name: "GitHub",   icon: "github-circle", url: "https://github.com/"},
 	],
 	hide: {
-		references: window.matchMedia("print"),
+		references: !print,
+		fossfund: true,
 	}
 };
 
@@ -130,7 +133,9 @@ Vue.component("position", {
 	</div>`,
 	computed: {
 		show: 		 	 function() { return !data.hide[this.id]; },
-		showDuration:	 function() { return !data.hide.duration; },
+		showDuration:	 function() {
+			return (!print || this.end) && !data.hide.duration;
+		},
 		dateString:		 function() { return formatDate(new Date(this.date)); },
 		startDate:       function() { return new Date(this.start); },
 		startDateString: function() { return formatDate(this.startDate); },
