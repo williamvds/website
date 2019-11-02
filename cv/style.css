@@ -11,6 +11,12 @@
 	}
 }
 
+@media print {
+	.no-print {
+		display: none !important;
+	}
+}
+
 ul {
 	margin: 0;
 }

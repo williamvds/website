@@ -27,6 +27,12 @@
 		</account>
 		<span id=username>{{username}}</span>
 	</div>
+	<div id=download v-if=!hide.download class=no-print>
+		<a href=/cv.pdf>
+			<span class=iconify data-icon=mdi-download></span>
+			<small>Download as PDF</small>
+		</a>
+	</div>
 </header>
 <main>
 <aside>
