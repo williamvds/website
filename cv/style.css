@@ -60,7 +60,7 @@ header {
 }
 
 #contact {
-	font-size: 16px;
+	font-size: large;
 }
 
 #content > a, .contact:not(:last-child), #sites > a {
@@ -71,9 +71,9 @@ header {
 	padding-left: 3px;
 }
 
-#username {
+#username, #address {
 	vertical-align: middle;
-	font-size: 15px;
+	font-size: large;
 }
 
 .contact {
@@ -170,9 +170,5 @@ section {
 }
 
 #skills h2 {
-	font-size: 1rem;
-}
-
-#skills p {
-	font-size: .9rem;
+	font-size: large;
 }
