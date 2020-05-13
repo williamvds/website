@@ -1,0 +1,20 @@
+{% set dateFmt = "%b %Y" %}
+<div class=position id="{{id}}">
+	<div class=positionTitle>
+		<h2 class=org><a href="{{url}}">{{org}}</a></h2>
+		{% if date %}<h3 class=date>{{date | date(format=dateFmt)}}</h3>
+		{% elif start %}
+			<h3 class=date>{{start | date(format=dateFmt)}}
+			&nbsp;&ndash;&nbsp;
+			{%- if end -%}
+				{{end | date(format=dateFmt)}}
+			{%- else -%}Present {%-endif-%}
+			{%- if showDuration -%}
+				<span class=duration>({{duration}})</span>
+			{%- endif -%}
+			</h3>
+		{% endif %}
+	</div>
+	<h3 class=title>{{title}}</h3>
+	{{body | markdown | safe}}
+</div>

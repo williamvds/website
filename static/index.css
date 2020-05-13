@@ -1,0 +1,40 @@
+a {
+	color: inherit;
+}
+
+body {
+	align-items: center;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.links {
+	margin-bottom: 16px;
+}
+
+a.highlight {
+	color: #2233bb;
+	padding: 4px;
+	background: #ffb52a;
+	border-top: solid #996c18 .2em;
+	color: #282828;
+}
+
+a.highlight svg > * {
+	color: #282828;
+}
+
+.links {
+	display: inline;
+	font-size: larger;
+}
+
+.links a:not(:last-child) {
+	margin-right: 16px;
+}
+
+.links > a svg {
+	margin-right: 4px;
+}

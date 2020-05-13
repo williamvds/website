@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" {#
+			#}content="{%- block description -%}{#
+				#}{{config.description}}{%- endblock description -%}
+			">
+		<meta name="author" content="{{config.extra.name}}">
+		<title>
+			{%- block title %}
+				{%- if page.title %}{{page.title}} | {% endif -%}
+				{{config.extra.name}}
+			{%- endblock title -%}
+		</title>
+		<link rel="stylesheet" href="{{ get_url(path="site.css") }}"/>
+		<link rel="icon" href="{{ get_url(path="favicon.ico") }}">
+		{% block head %}{% endblock head %}
+	</head>
+	<body>
+		<header>
+			{%- block header %}{% endblock header %}
+		</header>
+		{%- block content %}{% endblock content %}
+		<footer>
+			{%- block footer %}{% endblock footer %}
+		</footer>
+		<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+	</body>
+</html>

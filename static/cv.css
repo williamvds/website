@@ -5,12 +5,6 @@
 	--aside-margin-vertical: 16px;
 }
 
-@media screen {
-	body {
-		background: #eee;
-	}
-}
-
 @media print {
 	.no-print {
 		display: none !important;
@@ -19,18 +13,6 @@
 
 ul {
 	margin: 0;
-}
-
-* {
-	padding: 0;
-	margin: 0;
-	font-family: Noto Sans, Robot, sans-serif;
-	color: #333;
-}
-
-a {
-	text-decoration: none;
-	color: #2233bb;
 }
 
 h1 {
@@ -47,15 +29,25 @@ p {
 	margin: 0 0 .3rem 0;
 }
 
-#app {
-	margin: 0 auto;
-	max-width: var(--total-width);
+body {
+	align-items: center;
+	display: flex;
+	flex-flow: column;
 }
 
 /* header */
 
 header {
 	text-align: center;
+}
+
+header svg {
+	margin-right: 4px;
+}
+
+header a {
+	margin-right: 8px;
+	vertical-align: middle;
 }
 
 #sites {
@@ -67,10 +59,6 @@ header {
 
 #contact {
 	font-size: large;
-}
-
-#content > a, .contact:not(:last-child), #sites > a {
-	margin-right: 8px;
 }
 
 #contact > a {
@@ -86,15 +74,16 @@ header {
 	display: inline-block;
 }
 
-/* body */
-
-body {
-	margin: 8px;
+#links {
+	font-size: small;
 }
+
+/* body */
 
 main {
 	float: left;
-	max-width: var(--main-width);
+	max-width: var(--total-width);
+	margin: 8px;
 }
 
 section {
@@ -126,9 +115,9 @@ section {
 }
 
 .positionTitle {
-	 display: flex;
-	 justify-content: space-between;
-	 align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .date {
@@ -151,27 +140,18 @@ section {
 		margin: 0;
 	}
 
+	#skillsInner {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
 	#skills h2 {
-		display: table-cell;
+		flex: 1 0 40%;
 		padding-right: 16px;
 	}
 	
 	#skills p {
-		display: table-cell;
-		text-align: left;
-	}
-
-	#skillsInnerWrap {
-		text-align: center;
-	}
-
-	#skillsInner {
-		display: inline-table;
-		text-align: left;
-	}
-
-	.skill {
-		display: table-row;
+		flex: 1 0 57%;
 	}
 }
 

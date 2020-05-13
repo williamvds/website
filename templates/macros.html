@@ -1,0 +1,5 @@
+{% macro iconlink(icon, text, url, class="") %}
+<a {% if class %}class="{{class}}"{% endif %} href="{{url}}">
+	<span class=iconify data-icon="mdi-{{icon}}"></span>{{text}}
+</a>
+{% endmacro iconlink %}

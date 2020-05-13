@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Noto Sans, Roboto, sans-serif;
+}
+
+@media screen {
+	* {
+		color: #eee;
+	}
+
+	html, body {
+		background: #282828;
+	}
+
+	a {
+		color: #ffb52a;
+	}
+}
+
+html, body {
+	min-height: 100vh;
+	overflow: auto;
+}
+
+h1, h2 {
+	margin-bottom: 24px;
+}
+
+a {
+	text-decoration: none;
+}

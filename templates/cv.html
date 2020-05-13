@@ -1,0 +1,56 @@
+{% extends "page.html" %}
+{% import "macros.html" as macros %}
+
+{% block header %}
+	<h1 id=name>{{config.extra.name}}</h1>
+	<h2 id=headline>{{config.extra.headline}}</h2>
+	{% if config.extra.print %}
+		<div id=address>
+			<span class=iconify data-icon=mdi-home></span>
+			{{config.extra.address}}
+		</div>
+	{% endif %}
+	<div id=contact>
+		{% for k, v in config.extra.contacts %}
+			{% if v.printOnly and not config.extra.print %}
+				{% continue %}
+			{% endif %}
+			{{ macros::iconlink(
+				icon = k,
+				text = v.value,
+				url  = v.url ~ v.value
+			) }}
+		{% endfor %}
+	</div>
+	<div id=accounts>
+		{% for k, a in config.extra.accounts %}
+			{{ macros::iconlink(
+				icon  = a.icon,
+				text  = a.name,
+				url   = a.url ~ config.extra.username
+			) }}
+		{% endfor %}
+	</div>
+	<div id=links>
+		{{ macros::iconlink(
+			icon  = "download",
+			text  = "Download as PDF",
+			url   = "/cv.pdf",
+			class = "no-print smaller"
+		) }}
+	</div>
+{% endblock header %}
+
+{% block content %}
+	<main>
+		{{page.content | safe}}
+
+		{% if config.extra.print %}
+			<h1>
+				<span class=iconify data-icon=mdi-file-document></span>
+				References
+			</h1>
+			Available upon request
+		{% endif %}
+	</main>
+{% endblock content %}

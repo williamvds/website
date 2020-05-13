@@ -1,0 +1,40 @@
+base_url = "https://williamvds.me"
+compile_sass = false
+highlight_code = true
+build_search_index = false
+
+[extra]
+name     = "William Vigolo da Silva"
+headline = "Software developer"
+username = "williamvds"
+address  = ""
+email    = "william@williamvds.me"
+
+[extra.contacts.email]
+url   = "mailto:"
+value = "william@williamvds.me"
+
+[extra.contacts.phone]
+url       = "tel:"
+value     = ""
+printOnly = true
+
+[extra.contacts.web]
+url       = "https://"
+value     = "williamvds.me"
+printOnly = true
+
+[extra.accounts.linkedin]
+name = "LinkedIn"
+url  = "https://linkedin.com/in/"
+icon = "linkedin-box"
+
+[extra.accounts.github]
+name = "GitHub"
+url  = "https://github.com/"
+icon = "github-circle"
+
+[extra.links.pgp]
+name = "PGP key"
+url  = "/pgp.pub"
+icon = "key"

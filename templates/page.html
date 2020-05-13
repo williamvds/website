@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block head %}
+	{% if page.extra.style %}
+		<link rel="stylesheet" href="{{get_url(path=page.extra.style)}}"/>
+	{% endif %}
+{% endblock head %}
+
+{% block content %}
+	<main>
+		{{page.content | safe}}
+	</main>
+{% endblock content %}

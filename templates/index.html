@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block head %}
+	<link rel="stylesheet" href="{{ get_url(path="index.css") }}"/>
+{% endblock head %}
+
+{% block content %}
+	<h1>{{config.extra.name}}</h1>
+	<h2>{{config.extra.headline}}</h2>
+	<div class=links>
+		<a class=highlight href=cv>
+			<span class=iconify data-icon=mdi-file-document></span>Résumé
+		</a>
+		{% for k, a in config.extra.accounts %}
+			{{ macros::iconlink(
+				icon  = a.icon,
+				text  = a.name,
+				url   = a.url ~ config.extra.username,
+				class = "highlight"
+			) }}
+		{% endfor %}
+		{{ macros::iconlink(
+			icon  = "email",
+			text  = "Email",
+			url   = "mailto://" ~ config.extra.email,
+			class = "highlight"
+		) }}
+	</div>
+	<div class=links>
+		{% for k, l in config.extra.links %}
+			{{ macros::iconlink(
+				icon = l.icon,
+				text = l.name,
+				url  = l.url
+			) }}
+		{% endfor %}
+	</div>
+{% endblock content %}
