@@ -90,7 +90,7 @@ section {
 	page-break-inside: avoid;
 }
 
-@media (width < 1000px) {
+@media (width < var(--total-width)) {
 	main {
 		float: none;
 		max-width: none;
@@ -133,7 +133,7 @@ section {
 	margin-bottom: var(--aside-margin-vertical);
 }
 
-@media (width < 1000px) {
+@media (width < var(--total-width)) {
 	#skills {
 		float: none;
 		width: auto;
