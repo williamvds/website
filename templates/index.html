@@ -8,32 +8,19 @@
 {% block content %}
 	<h1>{{config.extra.name}}</h1>
 	<h2>{{config.extra.headline}}</h2>
+	{{ macros::nav(path="/", class="highlight") }}
 	<div class=links>
-		<a class=highlight href=cv>
-			<span class=iconify data-icon=mdi-file-document></span>Résumé
-		</a>
 		{% for k, a in config.extra.accounts %}
 			{{ macros::iconlink(
 				icon  = a.icon,
 				text  = a.name,
-				url   = a.url ~ config.extra.username,
-				class = "highlight"
+				url   = a.url ~ config.extra.username
 			) }}
 		{% endfor %}
 		{{ macros::iconlink(
 			icon  = "email",
 			text  = "Email",
-			url   = "mailto:" ~ config.extra.email,
-			class = "highlight"
+			url   = "mailto:" ~ config.extra.email
 		) }}
-	</div>
-	<div class=links>
-		{% for k, l in config.extra.links %}
-			{{ macros::iconlink(
-				icon = l.icon,
-				text = l.name,
-				url  = l.url
-			) }}
-		{% endfor %}
 	</div>
 {% endblock content %}

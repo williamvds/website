@@ -1,11 +1,34 @@
 :root {
-	--total-width: 1000px;
 	--aside-width: 25%;
 	--aside-margin-horizontal: 32px;
 	--aside-margin-vertical: 16px;
 }
 
 @media print {
+	nav {
+		display: none;
+	}
+
+	header, footer, main {
+		width: 100%;
+	}
+
+	h2, h3 {
+		margin: 0 0 .3rem 0;
+	}
+
+	h2 {
+		font-size: larger;
+	}
+
+	h3 {
+		font-size: large;
+	}
+
+	p {
+		margin-top: .3rem;
+	}
+
 	.no-print {
 		display: none !important;
 	}
@@ -15,35 +38,7 @@ ul {
 	margin: 0;
 }
 
-h1 {
-	font-size: 1.6rem;
-	margin: .6rem 0 .6rem 0;
-}
-
-h2, h3 {
-	font-size: 1.2rem;
-	margin: 0 0 .3rem 0;
-}
-
-p {
-	margin: 0 0 .3rem 0;
-}
-
-body {
-	align-items: center;
-	display: flex;
-	flex-flow: column;
-}
-
 /* header */
-
-header {
-	text-align: center;
-}
-
-header svg {
-	margin-right: 4px;
-}
 
 header a {
 	margin-right: 8px;
@@ -82,19 +77,24 @@ header a {
 
 main {
 	float: left;
-	max-width: var(--total-width);
-	margin: 8px;
 }
 
 section {
 	page-break-inside: avoid;
 }
 
-@media (width < var(--total-width)) {
+@media (width < 1000px) {
 	main {
 		float: none;
-		max-width: none;
 	}
+}
+
+#headline {
+	margin-top: 0;
+}
+
+.title:first-of-type {
+	margin-top: 0;
 }
 
 .categoryTitle > h1:not(.icon) {
@@ -133,28 +133,18 @@ section {
 	margin-bottom: var(--aside-margin-vertical);
 }
 
-@media (width < var(--total-width)) {
+#skills p {
+	margin-top: 0;
+}
+
+@media (width < 1000px) {
 	#skills {
 		float: none;
 		width: auto;
 		margin: 0;
 	}
-
-	#skillsInner {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	#skills h2 {
-		flex: 1 0 40%;
-		padding-right: 16px;
-	}
-	
-	#skills p {
-		flex: 1 0 57%;
-	}
 }
 
-#skills h2 {
+#skills h3 {
 	font-size: large;
 }

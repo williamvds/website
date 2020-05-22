@@ -1,5 +1,21 @@
 {% macro iconlink(icon, text, url, class="") %}
-<a {% if class %}class="{{class}}"{% endif %} href="{{url}}">
+<a class="iconlink {%- if class %} {{class}}{% endif %}" href="{{url}}">
 	<span class=iconify data-icon="mdi-{{icon}}"></span>{{text}}
 </a>
 {% endmacro iconlink %}
+
+{% macro nav(path, class="") %}
+<nav>
+	{%- for l in config.extra.links -%}
+		{%- if l.url == path and path == "/" -%}
+			{%- continue %}
+		{%- endif -%}
+		{{ macros::iconlink(
+			icon  = l.icon,
+			text  = l.name,
+			url   = l.url,
+			class = class
+		) }}
+	{%- endfor -%}
+</nav>
+{% endmacro nav %}

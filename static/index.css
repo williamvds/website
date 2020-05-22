@@ -10,13 +10,21 @@ body {
 	text-align: center;
 }
 
-.links {
-	margin-bottom: 16px;
+nav {
+	font-size: larger;
+}
+
+h1 {
+	margin-top: 0;
+}
+
+nav, h2, .links {
+	margin-top: 1rem;
 }
 
 a.highlight {
 	color: #2233bb;
-	padding: 4px;
+	padding: .3rem;
 	background: #ffb52a;
 	border-top: solid #996c18 .2em;
 	color: #282828;
@@ -31,10 +39,6 @@ a.highlight svg > * {
 	font-size: larger;
 }
 
-.links a:not(:last-child) {
-	margin-right: 16px;
-}
-
-.links > a svg {
-	margin-right: 4px;
+nav a:not(:last-child), a:not(:last-child) {
+	margin-right: 1rem;
 }

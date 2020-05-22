@@ -34,7 +34,17 @@ name = "GitHub"
 url  = "https://github.com/"
 icon = "github-circle"
 
-[extra.links.pgp]
+[[extra.links]]
+name = "Home"
+url  = "/"
+icon = "home"
+
+[[extra.links]]
+name = "Résumé"
+url  = "/cv"
+icon = "file-document"
+
+[[extra.links]]
 name = "PGP key"
 url  = "/pgp.pub"
 icon = "key"
