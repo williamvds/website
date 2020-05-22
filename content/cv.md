@@ -9,26 +9,26 @@ style = "cv.css"
 
 {% cv_skills() %}
 
-## Software development
+### Software development
 With C++, C, Java, Python, PHP, JavaScript, Haskell
 
-## Version control
+### Version control
 Using Git, with GitHub and GitLab  
 Using SVN
 
-## Web frontend
+### Web frontend
 With HTML(5), CSS  
 Experience with Vue.js
 
-## Platforms
+### Platforms
 Windows, GNU/Linux, macOS, iOS
 
-## Databases
+### Databases
 Using SQL, with MySQL and PostgreSQL
 
 {% end %}
 
-# {{icon(icon="briefcase")}} Work Experience {#experience}
+## {{icon(icon="briefcase")}} Work Experience {#experience}
 
 {% cv_entry(
 	id    = "feral"
@@ -50,7 +50,7 @@ I've learnt how to use __Xcode__ to develop for Apple platforms, and used
 __LLDB__ extensively to debug large applications and fix obscure bugs.
 {% end %}
 
-# {{icon(icon="school")}} Education {#education}
+## {{icon(icon="school")}} Education {#education}
 
 {% cv_entry(
 	id    = "uon"
@@ -74,7 +74,7 @@ Some exam results I'm proud of:
   and algorithms
 {% end %}
 
-# {{icon(icon="code-braces")}} Projects {#projects}
+## {{icon(icon="code-braces")}} Projects {#projects}
 
 {% cv_project(
 	id    = "microlator"
@@ -110,7 +110,7 @@ devices.
 Page transitions are performed through AJAX requests.
 {% end %}
 
-# {{icon(icon="pencil")}} Other interests {#other}
+## {{icon(icon="pencil")}} Other interests {#other}
 
 In my spare time I also enjoy archery, baking, and fiddling with open-source
 software. Some of my open-source contributions can be found on my GitHub
@@ -119,7 +119,7 @@ My personal computers and server run a distribution of GNU/Linux, so I've a good
 understanding of how to install, use, and maintain such systems.  
 I've completed some exercises on [Root Me](https://www.root-me.org/williamvds?lang=en) to test my knowledge of computer security and learn more about it.
 
-# {{icon(icon="charity")}} Volunteer work {#volunteer}
+## {{icon(icon="charity")}} Volunteer work {#volunteer}
 
 {% cv_entry(
 	id    = "coderdojo"
