@@ -10,6 +10,7 @@ headline = "Software developer"
 username = "williamvds"
 address  = ""
 email    = "william@williamvds.me"
+repo     = "https://github.com/williamvds"
 
 [extra.contacts.email]
 url   = "mailto:"
