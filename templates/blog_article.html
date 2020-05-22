@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block head %}
+	<meta name="description" content="{{ page.description }}">
+{% endblock head %}
+
+{% block header %}
+	{{ macros::nav(path="/" ~ page.path) }}
+{% endblock header %}
+
+{% block content %}
+	<main>
+		<article>
+			<h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
+			<p>{{ page.description }}</p>
+			{{ page.content | safe }}
+		</article>
+	</main>
+{% endblock content %}

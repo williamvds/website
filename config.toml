@@ -2,6 +2,7 @@ base_url = "https://williamvds.me"
 compile_sass = false
 highlight_code = true
 build_search_index = false
+generate_rss = true
 
 [extra]
 name     = "William Vigolo da Silva"
@@ -43,6 +44,16 @@ icon = "home"
 name = "Résumé"
 url  = "/cv"
 icon = "file-document"
+
+[[extra.links]]
+name = "Blog"
+url  = "/blog"
+icon = "typewriter"
+
+[[extra.links]]
+name = "RSS feed"
+url  = "/rss.xml"
+icon = "rss-box"
 
 [[extra.links]]
 name = "PGP key"

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block head %}
+	<meta name="description" content="{{ section.description }}">
+{% endblock head %}
+
+{% block header %}
+	{{ macros::nav(path="/" ~ section.path) }}
+	<h1>{{ section.title }}</h1>
+	<p>{{ section.description }}</p>
+{% endblock header %}
+
+{% block content %}
+	<main>
+		{% for post in section.pages %}
+			<div>
+				<h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+				{%- if post.date -%}
+					<span>Published {{ post.date | date(format="%d %B %Y") }}</span>
+				{%- endif %}
+				<p>{{ post.description }}</p>
+			</div>
+		{% endfor %}
+	</main>
+{% endblock content %}
