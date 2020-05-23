@@ -19,10 +19,19 @@ I originally created it with [Vue.js](https://vuejs.org), as I wanted a dynamic
 résumé I could adjust over time and tailor for particular job applications.  
 While I pushed this Vue.js version to my live server, I later realised the same
 could be achieved with a static site generator. I eventually settled on
-[Zola](https://getzola.org) as it seemed relatively lightweight, had a good
-selection of features, and didn't use JavaScript.
+[Zola](https://getzola.org) as it seems relatively lightweight, has a good
+selection of features, and doesn't use JavaScript.  
+It can easily be maintained in a Git repository, which allows me to push changes
+both to the origin repository (wherever that may be) and my server easily. With
+a Git hook I can have my server regenerate the site whenever I push changes,
+automating the deployment process.
 
 You can find the source for my website {{ repo(name="website", text="here") }}.
+
+Things to improve:
+
+- Use the Sass CSS extension language to clean up styling.
+- Stop using [Iconify](https://iconify.design) for loading icons.
 
 ### [Nextcloud](https://nextcloud.com)
 
@@ -48,7 +57,11 @@ Things to improve:
 ### [Taskwarrior server](https://taskwarrior.org)
 
 Taskwarrior is a powerful task tracking and time-keeping tool which I severely
-underutilise.  
+underutilise. Its appeal is how it can automatically prioritise tasks for me: I
+can input tasks and have a prioritised list always telling me the next thing I
+should be doing.
+Used properly, I see it being a great force for productivity and applying order
+when necessary.  
 I've set up a synchronisation server so my tasks can be shared between all my
 devices and I can keep up with them wherever I am.
 
@@ -59,6 +72,7 @@ Things to improve:
   features to it. The current state is an improvement in some aspects, but some
   functionality is broken. Also, sync messages regularly fail and produce
   annoying error notifications.
+- Work out how to use recurring tasks properly.
 - __Try to use it more often__
 
 ## Raspberry Pi
@@ -98,7 +112,10 @@ applications, as I'd like to have Cast protocol support again.
 
 Ideally we'd have an open-source implementation of the Cast server so one could
 create their own Chromecast devices, e.g. using micro-computers like the
-Raspberry Pi.
+Raspberry Pi. Something like [Mopidy](https://mopidy.com) combined with
+[Snapcast](https://mjaggard.github.io/snapcast) and/or [Home
+Assistant](#home-assistant) could
+provide an alternative.
 
 ### [Home Assistant](https://www.home-assistant.io)
 
