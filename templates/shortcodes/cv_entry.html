@@ -1,5 +1,5 @@
 {% set dateFmt = "%b %Y" %}
-<div class=position id="{{id}}">
+<section class=position id="{{id}}">
 	<div class=positionTitle>
 		<h3 class=org><a href="{{url}}">{{org}}</a></h3>
 		{% if date %}<h3 class=date>{{date | date(format=dateFmt)}}</h3>
@@ -17,4 +17,4 @@
 	</div>
 	<h3 class=title>{{title}}</h3>
 	{{body | markdown | safe}}
-</div>
+</section>
