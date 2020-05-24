@@ -1,3 +1,7 @@
+title = "William Vigolo da Silva"
+description = """
+Personal website and blog of William Vigolo da Silva, a software developer
+"""
 base_url = "https://williamvds.me"
 compile_sass = false
 highlight_code = true
@@ -6,7 +10,6 @@ build_search_index = false
 generate_rss = true
 
 [extra]
-name     = "William Vigolo da Silva"
 headline = "Software developer"
 username = "williamvds"
 address  = ""
