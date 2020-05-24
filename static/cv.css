@@ -75,10 +75,6 @@ header a {
 
 /* body */
 
-main {
-	float: left;
-}
-
 section {
 	page-break-inside: avoid;
 }

@@ -3,7 +3,7 @@ description = """
 Personal website and blog of William Vigolo da Silva, a software developer
 """
 base_url = "https://williamvds.me"
-compile_sass = false
+compile_sass = true
 highlight_code = true
 highlight_theme = "kronuz"
 build_search_index = false
