@@ -6,6 +6,7 @@
 
 {% macro nav(path, class="") %}
 <nav>
+	<span class=navname>{{config.title}}</span>
 	{%- for l in config.extra.links -%}
 		{%- if l.url == path and path == "/" -%}
 			{%- continue %}

@@ -53,6 +53,11 @@ nav a {
 	display: inline-block;
 }
 
+nav .navname {
+	font-weight: bold;
+	margin-right: .5em;
+}
+
 h1 {
 	margin-top: 2rem;
 }
