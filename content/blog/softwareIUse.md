@@ -8,6 +8,133 @@ slug="software-i-use"
 date = 2020-05-22
 +++
 
+## Personal computers
+
+You can find most of my configuration files {{ repo(name="config", text="here")
+}}.
+
+### Linux
+
+My computers run a distribution of GNU/Linux, specifically [Arch
+Linux](http://archlinux.org). It's the first distribution I installed and it's
+served me well, so I haven't had any reason to try another.
+
+Here's some things I like about it:
+
+- The [Arch User Repository (AUR)](https://aur.archlinux.org) lets anyone
+  provide the build scripts for creating packages that aren't in the main
+  repositories. This makes it far easier to keep all your installed software in
+  packages.
+- Rolling releases: packages are updated shortly after upstream releases,
+  meaning I can quickly get my hands on new features and bug fixes.
+  It's been a surprisingly stable experience - the only time I ran into an issue
+  after updating was while I was using the testing repositories.
+
+### [Sway](https://swaywm.org)
+
+A tiling window manager that uses the new Wayland protocol. It's mostly
+compatible with the more well-known [i3 window manager](https://i3wm.org).
+I started using tiling window managers about a year after I switched to
+GNU/Linux, and it's tough to go back to a traditional one.
+
+Here's some things I like about them:
+
+- Configuration files are human-readable, hence easy to edit and store in
+  version control
+- Keyboard shortcuts are available for all actions I regularly perform
+  (switching and organising windows, etc.)
+- Assigning windows to virtual desktops and automatic layouts means almost no
+  fussing about with window layouts, and I can easily get to the app I need
+- They're relatively lightweight but heavily customisable (see the "ricing"
+  subculture)
+
+While I was on macOS at work, I tried using
+[chunkwm](https://koekeishiya.github.io/chunkwm) to
+recreate the tiling window manager experience. However, macOS being what it is,
+getting the window manager set up was a frustrating task, and I never got it
+working reliably and how I wanted it. Minor inconveniences like compulsory
+desktop transition animations and key-binding limitations quickly add up to make
+a miserable experience.  
+chunkwm's author has more recently released a new window manager:
+[yabai](https://github.com/koekeishiya/yabai). Hopefully that provides a better
+experience, but for now, I just try to avoid macOS as much as possible.
+
+### [Firefox](https://firefox.com)
+
+I've been using Firefox since a bit before the 'Quantum' update. I'm happy to
+say it's now a snappy and stable experience. Most settings can be controlled in
+the human-readable [user.js](http://kb.mozillazine.org/User.js_file), and the
+browser can be themed using [the userChrome CSS
+files](https://www.userchrome.org).
+
+Some extensions I recommend:
+
+- [uBlock Origin](https://addons.mozilla.org/firefox/addon/ublock-origin): The only browser
+  ad-block extension you should use.
+- [uMatrix](https://addons.mozilla.org/firefox/addon/umatrix): uBlock, but
+  provides granular controls for each website. I block pretty much everything by
+  default so everything loads quickly, but some websites will require changing
+  rules to load properly.
+- [Decentraleyes](https://addons.mozilla.org/firefox/addon/decentraleyes):
+  Stores a local copy of commonly used JavaScript libraries so you're not
+  fetching them from Google or wherever.
+- [Better Image Viewer](https://addons.mozilla.org/firefox/addon/better-image-viewer):
+  Improves image viewing with stuff like scrolling to zoom and dragging to pan.
+- [Dark Background Light
+  Text](https://addons.mozilla.org/firefox/addon/dark-background-light-text):
+  Adjusts the colours of webpages to make a dark mode for every website.
+- [Multi-Account
+  Containers](https://addons.mozilla.org/firefox/addon/multi-account-containers):
+  Segregates your cookies and stuff into categories. Gives a privacy boost and
+  is convenient when managing multiple accounts on a single website.
+- [Hover Zoom+](https://addons.mozilla.org/firefox/addon/hover-zoom2): Hovering
+  over links and thumbnails will show a maximised image/album/video.
+- [Tab Center Redux](https://addons.mozilla.org/firefox/addon/tab-center-redux):
+  Shows your tabs in the sidebar. Combine it with `userChrome` styles to make
+  the most of your vertical monitor space. 
+- [Invidition](https://addons.mozilla.org/firefox/addon/invidition): Redirect
+  YouTube and Twitter to their lighter alternative frontends. Lets you avoid
+  YouTube's region & age restrictions and Twitter's login barriers.
+
+Things to improve:
+
+- Replace Tab Center Redux with [Tree Style
+  Tab](https://addons.mozilla.org/firefox/addon/tree-style-tab) to improve tab
+  organisation.
+- Fix screen-sharing in sway
+- Get GPU acceleration working
+
+### [Neovim](https://neovim.io)
+
+Vim's yet another piece of software that's difficult to give up once you've
+gotten into it. I picked it up when I was stuck in a university computer lab
+with nothing else to do and typed `$ vimtutor`.
+The learning curve is infamously harsh, but keep at it and you'll learn to use
+a text editing model that you can keep using for the rest of your life, and
+writing on computers will never be as mundane again.  
+I chose to use the Neovim fork because of its refactoring efforts and its
+ability to allow plugins to work asynchronously (though original Vim now also
+supports this).
+
+With a few plugins and tools Vim can also become a simple IDE, thanks to the
+[Language Server
+Protocol](https://microsoft.github.io/language-server-protocol).
+Enabling code completion, refactoring, and searching is now trivial exists for
+programming languages that have an existing tool that implements the protocol.  
+If all else fails, most popular IDEs have an add-on that provide a Vim-lite
+editing experience while maintaining all the useful features your IDE provides
+you.
+
+### [tmux](https://tmux.github.io)
+
+A window manager for your terminal. I use tmux in much the same way as I do
+sway, with sessions started automatically and programs launched in them. Ideally
+I'd just use my actual window manager, but being able to connect remotely and
+still have all my terminal sessions open is a killer feature I can't easily
+recreate with sway.  
+I've set up a few two-key bindings that are similar to the ones I use in sway;
+I use the `Super` key modifier in sway, and `Alt` in tmux.
+
 ## Self-hosting
 
 ### This website
