@@ -1,5 +1,6 @@
 :root {
 	--total-width: 1000px;
+	--tab-size: 4;
 }
 
 * {
@@ -84,6 +85,9 @@ code, pre {
 	background: #484848;
 	font-family: Noto Mono, monospace;
 	padding: 0 .4rem;
+	-moz-tab-size: var(--tab-size);
+	-o-tab-size: var(--tab-size);
+	tab-size: var(--tab-size);
 }
 
 pre {
