@@ -13,6 +13,9 @@
 	<main>
 		<article>
 			<h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
+			<span>Published
+				{{ page.date | date(format=config.extra.dateFmt) }}
+			</span>
 			<p>{{ page.description }}</p>
 			{{ page.content | safe }}
 		</article>

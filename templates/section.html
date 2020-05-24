@@ -17,7 +17,9 @@
 			<div>
 				<h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
 				{%- if post.date -%}
-					<span>Published {{ post.date | date(format="%d %B %Y") }}</span>
+					<span>Published
+						{{ post.date | date(format=config.extra.dateFmt) }}
+					</span>
 				{%- endif %}
 				<p>{{ post.description }}</p>
 			</div>
