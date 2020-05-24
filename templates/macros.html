@@ -4,9 +4,11 @@
 </a>
 {% endmacro iconlink %}
 
-{% macro nav(path, class="") %}
+{% macro nav(path, class="", title=true) %}
 <nav>
-	<span class=navname>{{config.title}}</span>
+	{%- if title %}
+		<span class=navname>{{config.title}}</span>
+	{%- endif %}
 	{%- for l in config.extra.links -%}
 		{%- if l.url == path and path == "/" -%}
 			{%- continue %}

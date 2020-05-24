@@ -8,7 +8,7 @@
 {% block content %}
 	<h1>{{config.title}}</h1>
 	<h2>{{config.extra.headline}}</h2>
-	{{ macros::nav(path="/", class="highlight") }}
+	{{ macros::nav(path="/", class="highlight", title=false) }}
 	<div class=links>
 		{% for k, a in config.extra.accounts %}
 			{{ macros::iconlink(
