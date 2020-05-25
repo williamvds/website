@@ -30,6 +30,18 @@ $aside-space-bottom: $space-small
 section
 	page-break-inside: avoid
 
+aside
+	line-height: 1.2
+	float: right
+	width: $aside-width
+	margin-left: $aside-space-left
+	margin-bottom: $aside-space-bottom
+
+	@media screen and (max-width: $small-thresh)
+		float: none
+		width: auto
+		margin: 0
+
 #headline, .title
 	margin-top: 0
 
@@ -46,15 +58,3 @@ section
 
 .date
 	font-size: medium
-
-#skills
-	line-height: 1.2
-	float: right
-	width: $aside-width
-	margin-left: $aside-space-left
-	margin-bottom: $aside-space-bottom
-
-	@media screen and (max-width: $small-thresh)
-		float: none
-		width: auto
-		margin: 0
