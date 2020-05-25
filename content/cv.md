@@ -9,8 +9,8 @@ style = "cv.css"
 
 {% cv_skills() %}
 
-### Software development
-With C++, C, Java, Python, PHP, JavaScript, Haskell
+### Software
+C++, C, Java, Python, PHP, JavaScript, Haskell
 
 ### Version control
 Using Git, with GitHub and GitLab  
