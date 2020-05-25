@@ -125,6 +125,52 @@ If all else fails, most popular IDEs have an add-on that provide a Vim-lite
 editing experience while maintaining all the useful features your IDE provides
 you.
 
+Things to improve:
+
+- Replace coc.nvim with [ALE](https://github.com/dense-analysis/ale) or
+  [deoplete-lsp](https://github.com/Shougo/deoplete-lsp). ALE also supports
+  handy non-LSP tools like [ShellCheck](https://www.shellcheck.net).
+
+### [Newsboat](https://newsboat.org)
+
+A terminal RSS reader which can synchronise with my Nextcloud service. Heavily
+customisable, just how I like it.
+
+### [aerc](https://aerc-mail.org)
+
+A simple terminal mail client. I swapped to aerc from
+[NeoMutt](https://neomutt.org) as I preferred the simpler interface aerc goes
+for. aerc handles IMAP and SMTP meaning so less configuration involved to get it
+set up. It's got a fair number of features that make it easy to handle Git patch
+requests and the like within the client. While I haven't yet used these features
+it sounds useful for anyone involved in open source software development.  
+I pair it with [OfflineIMAP](https://www.offlineimap.org) so I can keep a copy
+of my emails locally on my computers.
+
+Things to improve:
+
+- Proper notifications on new emails
+- Adjust appearance?
+
+### [Bash](https://www.gnu.org/software/bash)
+
+It's the standard GNU/Linux shell, so I prefer to use it whenever possible. With
+a few configuration adjustments I think it stands up well to the competition
+(I've also tried [zsh](https://www.zsh.org) and [fish](https://fishshell.com)).
+Using it as a scripting language is a different story. Lots of subtle
+behaviour and its limited feature set make it a hassle to create simple and
+correct scripts. I'd recommend using another scripting language for more complex
+scripts, or at least the very least using [ShellCheck](https://shellcheck.org)
+religiously.  
+I use an adjusted [Agnoster](https://github.com/speedenator/agnoster-bash)
+theme for a cleaner and more detailed command prompt.
+
+Things to improve:
+
+- Find something equivalent to [fish's
+  abbreviations](https://fishshell.com/docs/current/cmds/abbr.html): they'd make
+  command completion for aliases much less of a hassle.
+
 ### [tmux](https://tmux.github.io)
 
 A window manager for your terminal. I use tmux in much the same way as I do
@@ -134,6 +180,12 @@ still have all my terminal sessions open is a killer feature I can't easily
 recreate with sway.  
 I've set up a few two-key bindings that are similar to the ones I use in sway;
 I use the `Super` key modifier in sway, and `Alt` in tmux.
+
+Things to improve:
+
+- Show SSH connection and Git status in tmux bar (see
+  [tmux-gitbar](https://github.com/arl/tmux-gitbar)) instead of the Bash command
+  prompt.
 
 ## Self-hosting
 
@@ -175,8 +227,6 @@ Things to improve:
   kept in cold storage.
 - While contact syncing is available it doesn't seem to function properly with
   Android - currently it's only making regular `.vcf` backups.
-- Use the built-in RSS feed: either replace Newsboat or add Nextcloud support to
-  it.
 - Make a dark theme for the web UI.
 - Create a good terminal client: `nextcloudcmd` is bundled with the full
   Nextcloud QT5 client, which is rather hefty and depends on QT5's web engine.
@@ -296,16 +346,6 @@ Electron client, but it could still be better.
 Ideally, a new client would be built on [the C implementation of Signal's
 protocol](https://github.com/signalapp/libsignal-protocol-c). It'd probably have
 to reimplement a fair amount of the Electron client's features.
-
-### Feed synchronisation with [FeedHQ](https://feedhq.org) 
-
-If the Nextcloud news feed idea falls through, FeedHQ could provide a stopgap
-solution.  
-It's already supported by my terminal client ([Newsboat](https://newsboat.org))
-so I'd have to migrate to an Android client that supports it.
-
-I had some trouble trying to set this up, likely because it and its dependencies
-are use Python 2.
 
 ## Resources
 
