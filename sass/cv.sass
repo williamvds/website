@@ -1,0 +1,60 @@
+@import _variables
+
+$aside-width: 30%
+$aside-space-left: $space-medium
+$aside-space-bottom: $space-small
+
+@media print
+	body
+		padding: $space-small
+		line-height: 1.2
+
+	nav
+		display: none
+
+	h2, h3
+		margin: $space-small 0 0 0
+
+	h2
+		font-size: larger
+
+	h3
+		font-size: large
+
+	p
+		margin: $space-min 0 0 0
+
+	.no-print
+		display: none !important
+
+section
+	page-break-inside: avoid
+
+#headline, .title
+	margin-top: 0
+
+.projectTitle > *
+	display: inline-block
+
+.positionTitle
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+.projectTitle > *
+	display: inline-block
+
+.date
+	font-size: medium
+
+#skills
+	line-height: 1.2
+	float: right
+	width: $aside-width
+	margin-left: $aside-space-left
+	margin-bottom: $aside-space-bottom
+
+	@media screen and (max-width: $small-thresh)
+		float: none
+		width: auto
+		margin: 0
