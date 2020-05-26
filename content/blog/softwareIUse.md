@@ -50,11 +50,11 @@ Here's some things I like about them:
 
 While I was on macOS at work, I tried using
 [chunkwm](https://koekeishiya.github.io/chunkwm) to
-recreate the tiling window manager experience. However, macOS being what it is,
-getting the window manager set up was a frustrating task, and I never got it
-working reliably and how I wanted it. Minor inconveniences like compulsory
-desktop transition animations and key-binding limitations quickly add up to make
-a miserable experience.  
+recreate the tiling window manager experience. However, getting the window
+manager set up was a frustrating task, and I never got it working reliably and
+how I wanted it. Minor inconveniences like compulsory desktop transition
+animations and key-binding limitations quickly add up to make a miserable
+experience.  
 chunkwm's author has more recently released a new window manager:
 [yabai](https://github.com/koekeishiya/yabai). Hopefully that provides a better
 experience, but for now, I just try to avoid macOS as much as possible.
@@ -119,7 +119,7 @@ supports this).
 With a few plugins and tools Vim can also become a simple IDE, thanks to the
 [Language Server
 Protocol](https://microsoft.github.io/language-server-protocol).
-Enabling code completion, refactoring, and searching is now trivial exists for
+Enabling code completion, refactoring, and searching is now trivial for
 programming languages that have an existing tool that implements the protocol.  
 If all else fails, most popular IDEs have an add-on that provide a Vim-lite
 editing experience while maintaining all the useful features your IDE provides
