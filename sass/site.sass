@@ -32,10 +32,7 @@ header, footer, main
 		width: 100%
 
 nav
-	word-spacing: $space-small
-
-	*
-		word-spacing: normal
+	@include small-word-spacing
 
 	.navname
 		font-weight: bold
@@ -72,7 +69,7 @@ code, pre
 
 pre
 	padding: $space-min
-	border-left: .2rem solid white
+	border-left: $line-width solid $fg
 
 .iconlink
 	display: inline-block
