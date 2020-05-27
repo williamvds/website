@@ -1,0 +1,30 @@
+@import _variables
+
+a
+	color: inherit
+
+body
+	align-items: center
+	display: flex
+	flex-flow: column
+	justify-content: center
+	text-align: center
+
+nav
+	font-size: larger
+
+h1
+	margin-top: 0
+
+nav a, h2, .links
+	margin-top: $space-small
+
+a.highlight
+	@include bordered-box
+
+.links
+	display: inline
+	font-size: larger
+
+.links
+	@include small-word-spacing

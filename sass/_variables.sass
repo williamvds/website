@@ -1,7 +1,8 @@
-$bg:       #282828
-$bg-light: #383838
-$fg:       #eee
-$primary:  #ffb52a
+$bg:           #282828
+$bg-light:     #383838
+$fg:           #eee
+$primary:      #ffb52a
+$primary-dark: #996c18
 
 $font:      sans-serif
 $font-code: monospace
@@ -10,8 +11,21 @@ $line-height: 1.5
 $tab-size: 4
 
 $main-width:   50rem
+$line-width: .2em
 $space-large:  2rem
 $space-medium: 1.6rem
 $space-small:  1rem
 $space-min:    .4rem
-$small-thresh: 50rem + 2 * $space-small;
+$small-thresh: 50rem + 2 * $space-small
+
+@mixin small-word-spacing
+	word-spacing: $space-small
+
+	*
+		word-spacing: normal
+
+@mixin bordered-box($text: $bg, $background: $primary, $border: $primary-dark)
+	color: $text
+	padding: $space-min
+	background: $background
+	border-top: solid $border $line-width
