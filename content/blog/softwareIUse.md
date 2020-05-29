@@ -109,9 +109,9 @@ Things to improve:
 Vim's yet another piece of software that's difficult to give up once you've
 gotten into it. I picked it up when I was stuck in a university computer lab
 with nothing else to do and typed `$ vimtutor`.
-The learning curve is infamously harsh, but keep at it and you'll learn to use
-a text editing model that you can keep using for the rest of your life, and
-writing on computers will never be as mundane again.  
+The learning curve is infamously harsh, but keep at it and you'll learn a text
+editing model that you can keep using for the rest of your life, and writing on
+computers will never be as mundane again.  
 I chose to use the Neovim fork because of its refactoring efforts and its
 ability to allow plugins to work asynchronously (though original Vim now also
 supports this).
@@ -122,7 +122,7 @@ Protocol](https://microsoft.github.io/language-server-protocol).
 Enabling code completion, refactoring, and searching is now trivial for
 programming languages that have an existing tool that implements the protocol.  
 If all else fails, most popular IDEs have an add-on that provide a Vim-lite
-editing experience while maintaining all the useful features your IDE provides
+editing experience so you can keep all the useful features your IDE provides
 you.
 
 Things to improve:
@@ -140,10 +140,11 @@ customisable, just how I like it.
 
 A simple terminal mail client. I swapped to aerc from
 [NeoMutt](https://neomutt.org) as I preferred the simpler interface aerc goes
-for. aerc handles IMAP and SMTP meaning so less configuration involved to get it
-set up. It's got a fair number of features that make it easy to handle Git patch
-requests and the like within the client. While I haven't yet used these features
-it sounds useful for anyone involved in open source software development.  
+for. aerc handles IMAP and SMTP itself so there's less configuration involved to
+get it set up. It's got a fair number of features that make it easy to handle
+Git patch requests and the like within the client. While I haven't yet used
+these features it sounds useful for anyone involved in open source software
+development.  
 I pair it with [OfflineIMAP](https://www.offlineimap.org) so I can keep a copy
 of my emails locally on my computers.
 
@@ -160,8 +161,7 @@ a few configuration adjustments I think it stands up well to the competition
 Using it as a scripting language is a different story. Lots of subtle
 behaviour and its limited feature set make it a hassle to create simple and
 correct scripts. I'd recommend using another scripting language for more complex
-scripts, or at least the very least using [ShellCheck](https://shellcheck.org)
-religiously.  
+scripts, else use [ShellCheck](https://shellcheck.org) religiously.  
 I use an adjusted [Agnoster](https://github.com/speedenator/agnoster-bash)
 theme for a cleaner and more detailed command prompt.
 
