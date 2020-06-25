@@ -212,7 +212,7 @@ Things to improve:
 - Use the Sass CSS extension language to clean up styling.
 - Stop using [Iconify](https://iconify.design) for loading icons.
 
-### [Nextcloud](https://nextcloud.com)
+### [Nextcloud](https://nextcloud.com) {#nextcloud}
 
 A great "cloud" suite that provides file and calendar syncing. Once I had this
 set up I was kicking myself for not having done so sooner.
@@ -252,6 +252,11 @@ Things to improve:
 - Work out how to use recurring tasks properly.
 - __Try to use it more often__
 
+## [Firefox Sync Server](https://github.com/mozilla-services/syncserver)
+
+Allows you to store your synced Firefox data on your own server instead of
+Mozilla's.
+
 ## Raspberry Pi
 
 ### [Pi-Hole](https://pi-hole.net)
@@ -263,6 +268,111 @@ Things to improve:
 
 - Configure the WiFi hub so all devices actually pick up the Pi as the DNS and
   DHCP server.
+
+## Android smartphone
+
+### [LineageOS](https://lineageos.org)
+
+An open-source community-run modified distribution of the [Android Open Source
+Project](https://source.android.com). Supports a wide range of Android devices,
+including ones that aren't being updated by the manufacturer. Even if the
+manufacturer doesn't support it, they'll often support the latest versions of
+Android for your device.  
+Their changes from AOSP are rather minor, and add nice new features rather than
+adding bloat like many custom versions of Android tend to do.
+
+LineageOS still relies on proprietary drivers and such, so it's not _entirely_
+open-source, but probably the closest you're going to get for your device.  
+Installing [Google's proprietary apps and services](https://opengapps.org) is
+optional, but expect some apps (particularly proprietary ones) to misbehave with
+regards to push notifications.
+The [microG](https://microg.org) project provides an open-source
+re-implementation of Google's things, but requires modified LineageOS builds in
+order to pretend to be those apps. microG hasn't released builds for the latest
+version of Android yet, and I'd rather not rely on Google services at all, so
+I've not yet tried it.
+
+I'm content to have a _mostly_ functional mobile device that is as open-source
+as possible rather than rely on proprietary software and services, thus, the
+only option from the iOS/Android duopoly is the latter.  
+In the future I may take a look at [postmarketOS](https://postmarketos.org) for
+a true open-source operating system for my phone.
+
+### [AdAway](https://adaway.org)
+
+Provides system-wide adblocking through hosts files. Sadly it does require [root
+access](#magisk).
+
+### [AntennaPod](https://antennapod.org)
+
+For listening to podcasts, and has about all the features you could need.
+
+### [AnySoftKeyBoard](https://anysoftkeyboard.github.io)
+
+Highly customisable and feature-rich, including the wonderful swipe-typing.  
+A bit temperamental with suggestions and swiping, but mostly works. Sadly the
+settings UI is a bit of a mess and it's difficult to find what you're looking
+for.
+
+### [Aurora Store](https://auroraoss.com)
+
+An open-source client for using Google's Play Store. Handy when you really need
+a proprietary app, or when a FOSS app is only distributed through the Play Store
+(looking at you, Signal).
+
+### [Simple Calendar](https://www.simplemobiletools.com)
+
+A simple calendar application. Looks and works better than the stock LineageOS
+app.
+
+### [DAVx⁵](https://www.davx5.com)
+
+A CalDAV/CardDAV/WebCal client, useful for hooking up your phone's calendar and
+contacts to [Nextcloud](#nextcloud).
+
+### [F-Droid](https://f-droid.org)
+
+_The_ FOSS app repository for Android. You can download and update the vast
+majority of what you need from it.
+
+### [Firefox Preview](https://github.com/mozilla-mobile/fenix)
+
+A new preview version of Firefox for Android. The UI and performance is a bit
+better than the current version, and it's being actively worked on.
+I'll admit the UX still doesn't touch Google Chrome's, but I hope that'll soon
+change.
+
+### [Magisk](https://topjohnwu.github.io/Magisk) {#magisk}
+
+Grants you root access to your device.
+
+### [NewPipe](https://newpipe.schabi.org)
+
+An open-source client for YouTube, SoundCloud, and some FOSS media services.
+Provides features for free that these platforms charge for, including being able
+to download videos, listen or view them in the background, and remove adverts.
+
+### [Nextcloud](#nextcloud)
+
+I use the official Nextcloud and Nextcloud news apps. The [unofficial notes
+app](https://github.com/stefan-niedermann/nextcloud-notes) provides a better
+experience when editing notes, so I prefer it over the normal Nextcloud app.
+
+### [OsmAnd](https://osmand.net)
+
+An [OpenStreetMap](https://www.openstreetmap.org) client complete with offline
+maps, offline route calculation and navigation, and customisation.
+Public transport routing is _almost_ working, but in London, it often takes a
+long time a route or doesn't load at all.
+
+In the rare case where I need public transport routing, I just the service
+provided by the public transportation organisation.
+
+### [Password Store](https://github.com/android-password-store/Android-Password-Store)
+
+An Android client for [pass](https://www.passwordstore.org), which I use as my
+password manager.
+Requires [OpenKeychain](https://openkeychain.org) for PGP key functionality.
 
 ## Things I want to do
 
