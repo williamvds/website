@@ -1,7 +1,7 @@
 +++
 title = "Software I use"
 description = """
-A catalogue of software I use and how. I also go in to things I'd like to try or
+A catalogue of software I use and how. I also go into things I'd like to try or
 improve in the future.
 """
 slug="software-i-use"
