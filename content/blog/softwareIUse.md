@@ -1,8 +1,7 @@
 +++
 title = "Software I use"
 description = """
-A catalogue of software I use and how. I also go into things I'd like to try or
-improve in the future.
+A catalogue of software I use, and my ideas for changing things in the future
 """
 slug="software-i-use"
 date = 2020-05-22
@@ -206,11 +205,6 @@ a Git hook I can have my server regenerate the site whenever I push changes,
 automating the deployment process.
 
 You can find the source for my website {{ repo(name="website", text="here") }}.
-
-Things to improve:
-
-- Use the Sass CSS extension language to clean up styling.
-- Stop using [Iconify](https://iconify.design) for loading icons.
 
 ### [Nextcloud](https://nextcloud.com) {#nextcloud}
 

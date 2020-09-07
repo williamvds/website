@@ -1,7 +1,7 @@
 +++
 title = "Good design patterns: the command palette"
 description = """
-How a simple searchable list of actions is a boon for your user's experience.
+How a simple searchable list of actions is a boon for your user's experience
 """
 slug="command-palette"
 date = 2020-09-06
