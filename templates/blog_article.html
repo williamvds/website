@@ -17,7 +17,7 @@
 			<span>Published
 				{{ page.date | date(format=config.extra.dateFmt) }}
 			</span>
-			<p>{{ page.description }}</p>
+			<p class=subtitle>{{ page.description }}</p>
 			{{ page.content | safe }}
 		</article>
 	</main>
