@@ -16,6 +16,7 @@ address  = ""
 email    = "william@williamvds.me"
 repo     = "https://github.com/williamvds"
 dateFmt  = "%d %B %Y"
+print    = false
 
 [extra.contacts.email]
 url   = "mailto:"

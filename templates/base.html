@@ -22,6 +22,8 @@
 		<footer>
 			{%- block footer %}{% endblock footer %}
 		</footer>
-		<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+		{% if config.extra.print %}
+			<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+		{% endif %}
 	</body>
 </html>
