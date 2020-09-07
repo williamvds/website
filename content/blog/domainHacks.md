@@ -1,7 +1,7 @@
 +++
 title = "Domain name hacks"
 description = """
-Why hacky domain names are used and where they can go wrong
+Why hacky domain names are used and where they can go wrong.
 """
 slug="domain-hacks"
 date = 2020-08-04

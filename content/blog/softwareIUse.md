@@ -1,5 +1,5 @@
 +++
-title = "Software I Use"
+title = "Software I use"
 description = """
 A catalogue of software I use and how. I also go in to things I'd like to try or
 improve in the future.
