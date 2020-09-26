@@ -10,7 +10,7 @@ style = "cv.css"
 {% cv_skills() %}
 
 ### Software
-C++, C, Java, Python, PHP, JavaScript, Haskell
+C++, C, Java, C# (dotnet), Python, PHP, JavaScript, Haskell
 
 ### Version control
 Using Git, with GitHub and GitLab  
@@ -24,11 +24,24 @@ Experience with Vue.js
 Windows, GNU/Linux, macOS, iOS
 
 ### Databases
-Using SQL, with MySQL and PostgreSQL
+Using SQL, with PostgreSQL, Microsoft SQL server, and MySQL
 
 {% end %}
 
 ## {{icon(icon="briefcase")}} Work Experience {#experience}
+
+{% cv_entry(
+	id    = "sinara"
+	title = "Software Engineer"
+	org   = "Sinara"
+	url   = "https://sinara.com"
+	start = "2020-09-07"
+) %}
+At Sinara I've been working on software for financial organisations, usually
+with the .NET frameworks, including ASP.NET and MSSQL.  
+I've gained experience using Visual Studio and other tools to develop for the
+Windows platform.
+{% end %}
 
 {% cv_entry(
 	id    = "feral"
