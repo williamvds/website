@@ -11,7 +11,8 @@
 			{%- endblock title -%}
 		</title>
 		<link rel="stylesheet" href="{{ get_url(path="site.css") }}"/>
-		<link rel="icon" href="{{ get_url(path="favicon.ico") }}">
+		<link rel="icon" href="{{ get_url(path="favicon.ico") }}"/>
+		<link rel="alternate" type="application/rss+xml" title="RSS feed" href="{{ get_url(path="rss.xml", trailing_slash=false) }}"/>
 		{% block head %}{% endblock head %}
 	</head>
 	<body>
