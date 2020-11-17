@@ -14,7 +14,7 @@
 	<main>
 		<article>
 			<h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
-			<span>Published
+			<span class=date>
 				{{ page.date | date(format=config.extra.dateFmt) }}
 			</span>
 			<p class=subtitle>{{ page.description }}</p>

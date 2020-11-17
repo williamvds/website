@@ -3,6 +3,7 @@
 
 {% block head %}
 	<meta name="description" content="{{ section.description }}">
+	<link rel="stylesheet" href="{{get_url(path="section.css")}}"/>
 {% endblock head %}
 
 {% block header %}
@@ -17,7 +18,7 @@
 			<div>
 				<h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
 				{%- if post.date -%}
-					<span>Published
+					<span class=date>
 						{{ post.date | date(format=config.extra.dateFmt) }}
 					</span>
 				{%- endif %}
