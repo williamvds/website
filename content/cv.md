@@ -41,6 +41,18 @@ At Sinara I've been working on software for financial organisations, usually
 with the .NET frameworks, including ASP.NET and MSSQL.  
 I've gained experience using Visual Studio and other tools to develop for the
 Windows platform.
+
+Projects involved in:
+
+- Market data feed handler: a highly concurrent system that handles multicast
+  network traffic. I was involved in:
+	- Developing tools to support development and testing: a tool for debugging
+	  multicast connectivity, a market data visualisation tool, and a
+	  controllable emulator of the system the handler connects to.
+	- Designing, implementing and performing tests, including unit and
+	  integration tests, as well as manual testing.
+	- Implementing functionality, and correcting issues that arose during
+	  development.
 {% end %}
 
 {% cv_entry(
