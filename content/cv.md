@@ -73,7 +73,7 @@ __LLDB__ extensively to debug large applications and fix obscure bugs.
 	start = "2016-09-26"
 	end   = "2020-07-24"
 ) %}
-__Expected graduation:__ Summer 2020
+__Graduated:__ 24th July 2020, first class
 __Year averages:__ 1st: 88%, 2nd: 80.3%, 4th: 76.4%  
 __Dissertation project:__ Mining and analysing public government data of
 investment into research & innovation, applying some network and data analysis
