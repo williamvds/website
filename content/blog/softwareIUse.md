@@ -69,11 +69,10 @@ files](https://www.userchrome.org).
 Some extensions I recommend:
 
 - [uBlock Origin](https://addons.mozilla.org/firefox/addon/ublock-origin): The only browser
-  ad-block extension you should use.
-- [uMatrix](https://addons.mozilla.org/firefox/addon/umatrix): uBlock, but
-  provides granular controls for each website. I block pretty much everything by
-  default so everything loads quickly, but some websites will require changing
-  rules to load properly.
+  ad-block extension you should use. I use uBlock Origin's [dynamic filtering
+  feature](https://github.com/gorhill/uBlock/wiki/Dynamic-filtering:-quick-guide)
+  to block third-party resources, so pages load quickly by default, but some 
+  sites require configuration to load properly.
 - [Decentraleyes](https://addons.mozilla.org/firefox/addon/decentraleyes):
   Stores a local copy of commonly used JavaScript libraries so you're not
   fetching them from Google or wherever.
@@ -86,22 +85,26 @@ Some extensions I recommend:
   Containers](https://addons.mozilla.org/firefox/addon/multi-account-containers):
   Segregates your cookies and stuff into categories. Gives a privacy boost and
   is convenient when managing multiple accounts on a single website.
-- [Hover Zoom+](https://addons.mozilla.org/firefox/addon/hover-zoom2): Hovering
+- [Hover Zoom+](https://addons.mozilla.org/firefox/addon/hover-zoom-plus): Hovering
   over links and thumbnails will show a maximised image/album/video.
-- [Tab Center Redux](https://addons.mozilla.org/firefox/addon/tab-center-redux):
+- [SponsorBlock](https://addons.mozilla.org/firefox/addon/sponsorblock): Skip
+  sponsorship segments in YouTube videos.
+- [Tab Center Reborn](https://addons.mozilla.org/firefox/addon/tabcenter-reborn):
   Shows your tabs in the sidebar. Combine it with `userChrome` styles to make
   the most of your vertical monitor space. 
-- [Invidition](https://addons.mozilla.org/firefox/addon/invidition): Redirect
-  YouTube and Twitter to their lighter alternative frontends. Lets you avoid
-  YouTube's region & age restrictions and Twitter's login barriers.
+- [Privacy Redirect](https://addons.mozilla.org/firefox/addon/privacy-redirect): Redirect
+  YouTube, Twitter, and others to their lighter alternative frontends. Lets you
+  avoid YouTube's region & age restrictions and Twitter's login barriers.
+- [Tridactyl](https://addons.mozilla.org/firefox/addon/tridactyl-vim): Vim-like
+  key bindings in your browser.
+- [PassFF](https://addons.mozilla.org/firefox/addon/passff): A browser
+  plugin for my password manager, [pass](https://www.passwordstore.org).
 
 Things to improve:
 
-- Replace Tab Center Redux with [Tree Style
+- Replace Tab Center with [Tree Style
   Tab](https://addons.mozilla.org/firefox/addon/tree-style-tab) to improve tab
   organisation.
-- Fix screen-sharing in sway
-- Get GPU acceleration working
 
 ### [Neovim](https://neovim.io)
 
@@ -123,12 +126,6 @@ programming languages that have an existing tool that implements the protocol.
 If all else fails, most popular IDEs have an add-on that provide a Vim-lite
 editing experience so you can keep all the useful features your IDE provides
 you.
-
-Things to improve:
-
-- Replace coc.nvim with [ALE](https://github.com/dense-analysis/ale) or
-  [deoplete-lsp](https://github.com/Shougo/deoplete-lsp). ALE also supports
-  handy non-LSP tools like [ShellCheck](https://www.shellcheck.net).
 
 ### [Newsboat](https://newsboat.org)
 
