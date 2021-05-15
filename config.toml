@@ -4,10 +4,12 @@ Personal website and blog of William Vigolo da Silva, a software developer
 """
 base_url = "https://williamvds.me"
 compile_sass = true
-highlight_code = true
-highlight_theme = "kronuz"
 build_search_index = false
 generate_rss = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "kronuz"
 
 [extra]
 headline = "Software developer"
