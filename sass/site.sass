@@ -63,14 +63,22 @@ code, pre
 	background: $bg-light
 	font-family: $font-code
 	padding: 0 $space-min
+	overflow-x: auto
 
 	-moz-tab-size: $tab-size
 	-o-tab-size:   $tab-size
 	tab-size:      $tab-size
 
 pre
+	@include box-shadow
 	padding: $space-min
-	border-left: $line-width solid $fg
+
+	@media (max-width: $small-thresh)
+		margin: $space-small (-$space-small)
+		padding: $space-min $space-small
+
+	code
+		padding: 0
 
 .iconlink
 	display: inline-block

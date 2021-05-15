@@ -6,6 +6,27 @@ article img
 	margin: 0 auto
 	max-width: 100%
 
+#toc
+	ul
+		list-style: none
+
+	li.h3::before
+		content: "└─"
+
+	@media screen and (min-width: $sidebar-thresh)
+		height: 100vh
+		left: $space-small
+		position: fixed
+		top: 0
+		width: $sidebar-width
+		overflow-y: scroll
+
+		nav ul
+			padding-left: 0
+
+		li
+			margin-bottom: $space-small
+
 .caption
 	font-size: small
 	margin-top: 0

@@ -18,6 +18,9 @@
 				{{ page.date | date(format=config.extra.dateFmt) }}
 			</span>
 			<p class=subtitle>{{ page.description }}</p>
+			{% if page.extra.table_of_contents %}
+				{{ macros::page_toc(toc=page.toc) }}
+			{% endif %}
 			{{ page.content | safe }}
 		</article>
 	</main>

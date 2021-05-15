@@ -1,5 +1,6 @@
 $bg:           #282828
 $bg-light:     #383838
+$bg-dark:      #181818
 $fg:           #eee
 $primary:      #ffb52a
 $primary-dark: #996c18
@@ -11,12 +12,17 @@ $line-height: 1.5
 $tab-size: 4
 
 $main-width:   50rem
+$sidebar-width: 20rem
 $line-width: .2em
 $space-large:  2rem
 $space-medium: 1.6rem
 $space-small:  1rem
 $space-min:    .4rem
-$small-thresh: 50rem + 2 * $space-small
+$small-thresh: $main-width + 2 * $space-small
+$sidebar-thresh: $main-width + 2 * ($sidebar-width + $space-medium)
+
+@mixin box-shadow
+	box-shadow: $bg-dark 0 0 $space-min
 
 @mixin small-word-spacing
 	word-spacing: $space-small

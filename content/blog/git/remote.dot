@@ -1,0 +1,40 @@
+digraph branch {
+    bgcolor = transparent
+    color = white
+    rankdir = RL
+    ranksep = 0.2
+    node [fontname=monospace, fontsize=12, fontcolor="#eeeeee",
+          margin="0.06,0.1", height=0, color="#eeeeee"]
+    edge [fontcolor="#eeeeee", color="#eeeeee", arrowsize=0.8]
+
+    node [shape=box, labeldistance=0.2]
+    "d8bcda2"
+    "6679b16"
+    "d86ecf9"
+    "f0d4fc5"
+    "83ff9ad"
+
+    node [shape=none, margin=0.05, height=0, layer="refs"]
+    remote_master [label="remotes/origin/master"]
+    HEAD
+    master [label="heads/master"]
+    first [label="tags/first"]
+
+    "6679b16" -> "d8bcda2"
+    "d86ecf9" -> "d8bcda2"
+    "f0d4fc5" -> "6679b16"
+    "f0d4fc5" -> "d86ecf9"
+    "83ff9ad" -> "f0d4fc5"
+
+    {
+        rank = same
+        first -> "d8bcda2" [constraint=false]
+    }
+
+    {
+        rank = same
+        remote_master -> "83ff9ad"
+        master -> "83ff9ad" [constraint=false]
+        HEAD -> master [constraint=false]
+    }
+}

@@ -22,3 +22,29 @@
 	{%- endfor -%}
 </nav>
 {% endmacro nav %}
+
+{% macro page_toc(toc) %}
+{% if toc %}
+<div id=toc>
+	<nav>
+		<h2>Sections</h2>
+		<ul>
+			{% for h2 in toc %}
+			<li class=h2>
+				<a href="{{h2.permalink | safe}}">{{h2.title}}</a>
+				{% if h2.children %}
+				<ul>
+					{% for h3 in h2.children %}
+					<li class=h3>
+						<a href="{{h3.permalink | safe}}">{{h3.title}}</a>
+					</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			</li>
+			{% endfor %}
+		</ul>
+	</nav>
+</div>
+{% endif %}
+{% endmacro page_toc %}
