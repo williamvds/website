@@ -139,7 +139,7 @@ up every now and then to exercise your legs!
 Getting some first-hand experience in a job tells you another thing: what your
 preferences are. A good internship will expose you to a variety of aspects of
 your field, e.g. frontend/backend website/application development, different
-technologies, different roles within a team. You'll also found out *how* you
+technologies, different roles within a team. You'll also have found out *how* you
 like to work. Do you dislike wearing a suit to work? How do you feel about open
 offices? Would you prefer flexitime or remote working over a traditional 9-5
 in-office work week? This helps inform your choices after your internship, i.e.,
