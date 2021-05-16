@@ -14,7 +14,7 @@ table_of_contents = true
 
 ## Introduction
 
-Git[^1] is the best version control software I've used, but it's difficult to
+Git is the best version control software I've used, but it's difficult to
 find a tutorial that explains enough to provide a strong understanding of it, so
 in this article I take a shot at creating my own. Even if you've been using Git
 for a while, you might just learn a thing or two from this - I certainly did
@@ -31,10 +31,10 @@ Instead of hiding them, I'll explain the under-the-hood behaviour while teaching
 the usual Git commands and day-to-day operations.
 
 If you prefer video explanations over long text articles like this I'd recommend
-The Missing Semester's lecture on Git[^2], _Git For Ages 4 And Up_[^3] for Git
-beginners, or _Git From the Bits Up_[^4] for those who are more experienced.
-This article takes inspiration from these, but also tries to expand upon what
-they didn't have time to cover.
+The Missing Semester's lecture on Git,[^missing-semester-git] _Git For Ages 4
+And Up_ for Git beginners,[^git-ages-4-up] or _Git From the Bits Up_ for those
+who are more experienced.[^git-from-bits-up] This article takes inspiration from
+these, but also tries to expand upon what they didn't have time to cover.
 
 ### Why is Git?
 
@@ -63,7 +63,7 @@ Sharing changes in Git is trivial: they can be sent as plain text, or taken
 directly from another copy of the repository. Most developers are probably
 experienced with using the popular Git platforms like GitHub, GitLab, and
 Bitbucket to share their repositories, but kernel developers simply send their
-changes in plain text over email[^5].
+changes in plain text over email.[^linux-mail-archives]
 
 <!--
 ### Git vs alternatives
@@ -149,8 +149,8 @@ terms, they're an analogy comparing this dichotomy to the porcelain
 confusing plumbing which you usually don't want to think about.
 
 I'll explain Git-specific terms and as we get to them, but you can refer to the
-Git glossary with `$ man gitglossary`[^6] for an explanation of new terms you come
-across when reading about Git.
+Git glossary with `$ man gitglossary`[^gitglossary] for an explanation of new
+terms you come across when reading about Git.
 
 ## Creating a repository
 
@@ -1529,12 +1529,12 @@ index 919d56c,a4e9201..345e6ae
 Instead of showing just a simple before-and-after, the diff shows the changes
 applied to both the contents from `master` and `conflict`, followed by the new
 change which replaced both. This is a _combined diff_, showing the change that
-the new commit introduces in comparison to all of its parents[^7]. If we kept
-the contents from either `master` or `conflicts` the diff would be empty;
-technically the merge would have introduced no new changes. In that case, you
-could instead use `$ git diff <merge commit>..<merge-commit>^` to show changes
-that the merge introduced into the target branch. I'll explain this syntax in
-the next section.
+the new commit introduces in comparison to all of its
+parents.[^git-combined-diff] If we kept the contents from either `master` or
+`conflicts` the diff would be empty; technically the merge would have introduced
+no new changes. In that case, you could instead use `$ git diff <merge
+commit>..<merge-commit>^` to show changes that the merge introduced into the
+target branch. I'll explain this syntax in the next section.
 
 ```bash
 # Delete the new branch to clean up
@@ -1720,13 +1720,13 @@ d8bcda2 (tag: first) Commit 1
 ```
 
 A reflog is kept for each head, and so as long as an unreachable commit is
-accessible through commits in any reflog Git will keep them around.
-Reflogs are pruned over time when you run Git commands, by default keeping the
-last 90 days of history[^8], which is plenty of time in most cases to recover
-useful work you accidentally made unreachable. Unreachable objects are created
-fairly regularly while using Git, e.g. when you stage a file multiple times
-before committing it. Garbage collection stops these objects from bloating your
-local repository.
+accessible through commits in any reflog Git will keep them around.  Reflogs are
+pruned over time when you run Git commands, by default keeping the last 90 days
+of history,[^git-garbage-collection] which is plenty of time in most cases to
+recover useful work you accidentally made unreachable. Unreachable objects are
+created fairly regularly while using Git, e.g. when you stage a file multiple
+times before committing it. Garbage collection stops these objects from bloating
+your local repository.
 
 Don't rely on the reflog to save things that you want to be kept safe in the
 long-term - use [branches](#branches) or [the stash](#stash) instead.
@@ -2274,7 +2274,7 @@ $ cat .git/config
 Remotes are configured in the local repository config file. The `url` option is
 the location of the remote, in this case a relative path to the remote on our
 local filesystem. More formats are supported, including `https://...` and
-`ssh://`...[^9].
+`ssh://...`.[^gitremotes]
 
 Cloning is the normal way to get a copy of an existing repository. The cloned
 URL will automatically be added as the `origin` remote, but more remotes can be
@@ -2518,7 +2518,7 @@ match your local history. This option ensures that the heads in the remote match
 your remote-tracking branches, so you won't accidentally lose commits that have
 been made since your last fetch. However, this option is not infallible; it
 would fail to protect you if another process is updating your tracking branches
-in the background[^11].
+in the background.[^git-push-force-with-lease]
 
 Similarly, the `--force` option also ignores the error, but doesn't perform any
 checks on the remote heads, so use it with even more caution. As mentioned in
@@ -2565,28 +2565,29 @@ recommend checking out [Magit](https://magit.vc) or
 
 ## References
 
-[^1]: <https://git-scm.com>
+[^missing-semester-git]: <https://missing.csail.mit.edu/2020/version-control>
 
-[^2]: <https://missing.csail.mit.edu/2020/version-control>
+[^git-ages-4-up]: _Git For Ages 4 And Up_ by Micheal Schwern @ Linux.conf.au
+  2013.  [YouTube](https://www.youtube.com/watch?v=1ffBJ4sVUb4), [Wayback
+  Machine](https://web.archive.org/web/*/https://www.youtube.com/watch?v=1ffBJ4sVUb4)
 
-[^3]: _Git For Ages 4 And Up_ by Micheal Schwern @ Linux.conf.au 2013.
-  [YouTube](https://www.youtube.com/watch?v=1ffBJ4sVUb4),
-  [Wayback Machine](https://web.archive.org/web/*/https://www.youtube.com/watch?v=1ffBJ4sVUb4)
+[^git-from-bits-up]: _Git From the Bits Up_ by Tim Berglund @ JAXconf 2013.
+  [YouTube](https://www.youtube.com/watch?v=MYP56QJpDr4), [Wayback
+  Machine](https://web.archive.org/web/*/https://www.youtube.com/watch?v=MYP56QJpDr4)
 
-[^4]: _Git From the Bits Up_ by Tim Berglund @ JAXconf 2013.
-	[YouTube](https://www.youtube.com/watch?v=MYP56QJpDr4),
-	[Wayback Machine](https://web.archive.org/web/*/https://www.youtube.com/watch?v=MYP56QJpDr4)
-
-[^5]: See archives of these mailing lists at
+[^linux-mail-archives]: See archives of these mailing lists at
   [lore.kernel.org](https://lore.kernel.org)
 
-[^6]: <https://git-scm.com/docs/gitglossary>
+[^gitglossary]: <https://git-scm.com/docs/gitglossary>
 
-[^7]: <https://git-scm.com/docs/git-diff-tree#_diff_format_for_merges>
+[^git-combined-diff]:
+  <https://git-scm.com/docs/git-diff-tree#_diff_format_for_merges>
 
-[^8]: <https://git-scm.com/docs/git-reflog#Documentation/git-reflog.txt---expirelttimegt>
+[^git-garbage-collection]:
+  <https://git-scm.com/docs/git-reflog#Documentation/git-reflog.txt---expirelttimegt>
 
-[^9]: All supported remote URL formats are listed in <https://git-scm.com/docs/git-fetch#_git_urls>
+[^gitremotes]: All supported remote URL formats are listed in
+  <https://git-scm.com/docs/git-fetch#_git_urls>
 
-[^10]:
+[^git-push-force-with-lease]:
   <https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-leaseltrefnamegt>
