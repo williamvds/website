@@ -29,8 +29,8 @@ digraph branch {
     "f0d4fc5" -> "6679b16"
     "f0d4fc5" -> "d86ecf9"
     "83ff9ad" -> "f0d4fc5"
-    "4de8826" -> "83ff9ad"
-    "7b4d6dd" -> "4de8826"
+    "7b4d6dd" -> "83ff9ad"
+    "4de8826" -> "7b4d6dd"
     "6a8f027" -> "83ff9ad"
 
     {
@@ -45,7 +45,7 @@ digraph branch {
 
     {
         rank = same
-        cherrypick_from -> "7b4d6dd"
+        cherrypick_from -> "4de8826"
     }
 
     {

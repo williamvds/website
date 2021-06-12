@@ -1,0 +1,60 @@
+digraph test {
+    bgcolor = transparent
+    color = white
+    fontcolor = white
+    fontname = "sans-serif"
+    labelloc = top
+    labeljust = right
+    rankdir = TB
+
+    node [fontname="sans-serif" fontsize=12 fontcolor="#eeeeee" color="#eeeeee"]
+    edge [fontname="monospace" fontcolor="#eeeeee" color="#eeeeee" arrowsize=0.8]
+
+    worktree [label="{
+          <name>Working tree
+        | { { file1.txt | file2.txt }
+            | { ff709a8 | 1ed6543 } }
+    }" shape=record]
+
+    subgraph cluster_repository {
+        label = "Repository"
+
+        index [label="{
+              <name>Index
+            | { { file1.txt | file2.txt }
+                | { ff709a8 | 1ed6543 } }
+        }" shape=record]
+        HEAD [shape=plaintext]
+
+        subgraph cluster_objects {
+            label = "Objects"
+
+            commit [label="commit\nd8bcda2" shape=box]
+            tree [label=<
+                <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
+                    <tr>
+                        <td colspan="2" port="name">tree <br/> fe89dfe</td>
+                    </tr>
+                    <tr>
+                        <td>file1.txt</td>
+                        <td port="blob">1ed6543</td>
+                    </tr>
+                </table>
+            > shape=none]
+            blob [label="blob\n1ed6543" shape=box]
+
+            {
+                rank = same
+                commit:e -> tree:name
+                tree:blob:e -> blob:w
+            }
+        }
+
+        HEAD -> commit
+        index:name -> tree:name:nw [label="$ git diff --staged"
+            dir=both style=bold color=red constraint=false]
+    }
+
+    worktree:name:w -> index:name:w [label="$ git diff"
+        dir=both style=bold color=red]
+}

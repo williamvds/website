@@ -1,1 +1,11 @@
-cd .. && zola build
+#!/usr/bin/env bash
+set -e
+shopt -s globstar
+
+cd ..
+
+for f in content/blog/**/*.dot; do
+	dot "$f" -Tsvg -o "${f%.dot}".svg
+done
+
+zola build
