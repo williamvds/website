@@ -397,8 +397,8 @@ Let's finalise our commit, attaching a description for this snapshot with the
 `--message` option:
 
 ```bash
-$ git commit --message "Commit 1"
-[master (root-commit) d8bcda2] Commit 1
+$ git commit --message "Add file1.txt"
+[master (root-commit) 173bb18] Add file1.txt
  1 file changed, 1 insertion(+)
  create mode 100644 file1.txt
 
@@ -411,11 +411,11 @@ Let's run `$ git show` to see the last commit that we just created:
 
 ```git
 $ git show
-commit d8bcda2bb26dfbd50c6f07e4aabb1aef9be44594 (HEAD -> master)
+commit 173bb18cd1059b1efb048dc32442eb34b36c78a4 (HEAD -> master)
 Author: William <william@example.com>
-Date:   Wed Mar 10 21:24:32 2021 +0000
+Date:   Fri Jan 1 00:00:00 2021 +0000
 
-    Commit 1
+    Add file1.txt
 
 diff --git a/file1.txt b/file1.txt
 new file mode 100644
@@ -453,8 +453,8 @@ $ tree .git
 ├── objects
 │   ├── 1e
 │   │   └── d6543483aafc93c5323daea1860bd7a29857d4
-│   ├── d8
-│   │   └── bcda2bb26dfbd50c6f07e4aabb1aef9be44594
+│   ├── 58
+│   │   └── fa13f5e9dff3635df5401f0aa8ef5868f18e29
 │   ├── fe
 │   │   └── 89dfe71214c0d45973c551c45a449b3b2f49f7
 │   ├── info
@@ -505,15 +505,15 @@ contains a single file: `file1.txt`.
 And now for the final object:
 
 ```bash
-$ git cat-file -t d8bc
+$ git cat-file -t 58fa
 commit
 
-$ git cat-file -p d8bc
+$ git cat-file -p 58fa
 tree fe89dfe71214c0d45973c551c45a449b3b2f49f7
 author William <william@example.com> 1615411472 +0000
 committer William <william@example.com> 1615411472 +0000
 
-Commit 1
+Add file1.txt
 ```
 
 As you might have noticed, this is the object referenced by the earlier `$ git
@@ -552,15 +552,15 @@ history, and to support collaboration between multiple users.
 
 Normally you'll only be concerned with commits. You can run `$ git log` to list
 the "current" commit followed by its ancestors. Right now it'll show the first
-commit, `d8bcda2`:
+commit, `173bb18`:
 
 ```gitlog
 $ git log
-commit d8bcda2bb26dfbd50c6f07e4aabb1aef9be44594 (HEAD -> master)
+commit 173bb18cd1059b1efb048dc32442eb34b36c78a4 (HEAD -> master)
 Author: William <william@example.com>
-Date:   Wed Mar 10 21:24:32 2021 +0000
+Date:   Fri Jan 1 00:00:00 2021 +0000
 
-    Commit 1
+    Add file1.txt
 ```
 
 ### Showing your changes
@@ -671,7 +671,7 @@ commands are comparing:
 The working tree is a table listing file1.txt next to the blob name ff709a8, and
 file2.txt next to 1ed6543. The repository is shown as a box containing the index
 (a table that matches the working tree), HEAD, and a set of objects. HEAD points
-to commit d8bcda2, which points to tree fe89dfe, which has an entry for
+to commit 173bb18, which points to tree fe89dfe, which has an entry for
 file1.txt which points to blob 1ed6543.
 A red line connecting the working tree and the index is labelled with "git
 diff". Another red line connecting the index and tree fe89dfe is labelled with
@@ -887,23 +887,23 @@ user-friendly to use than full commit names. These are stored in files under
 ref. They can be used in Git commands instead of commit names.
 
 _Tags_ are user-specified refs, contained in `.git/refs/tags`. They're typically
-used to mark significant commits with a user-friendly name, such as labelling
-the commit used for a specific software release with "v1.0". 
+used to mark significant commits with a user-friendly name, e.g. labelling
+the commit used for a software release with "v1.0". 
 
 To create a new tag, use `$ git tag`:
 
-```git
+```bash
 $ git tag first
 
 $ cat .git/refs/tags/first
-d8bcda2bb26dfbd50c6f07e4aabb1aef9be44594
+173bb18cd1059b1efb048dc32442eb34b36c78a4
 
 $ git show first
-commit d8bcda2bb26dfbd50c6f07e4aabb1aef9be44594 (HEAD -> master, tag: first)
+commit 173bb18cd1059b1efb048dc32442eb34b36c78a4 (HEAD -> master, tag: first)
 Author: William <william@example.com>
-Date:   Wed Mar 10 21:24:32 2021 +0000
+Date:   Fri Jan 1 00:00:00 2021 +0000
 
-    Commit 1
+    Add file1.txt
 
 diff --git a/file1.txt b/file1.txt
 new file mode 100644
@@ -920,9 +920,9 @@ the first commit in the repository.
 
 A _head_ (lowercase) points to a commit that is the "tip" of a branch. Branches
 represent a "line of development". When you add a commit while on a branch, Git
-automatically updates the 'head' ref of a branch to point to the new commit, so
-the "tip" is maintained. "Branch" and "head" are sometimes used interchangeably
-in Git documentation. I'll expand on branches in the next section.
+automatically updates the head ref of a branch to point to the new commit, so
+the tip is maintained. "Branch" and "head" are sometimes used interchangeably in
+Git documentation. I'll expand on branches in the next section.
 
 Heads are stored in `.git/refs/heads`. For example, `heads/master` tracks Git's
 default branch, `master`. Right now, it contains the name of the first commit
@@ -932,7 +932,7 @@ _HEAD_ (uppercase) is a special ref that tells Git which commit will be the
 parent of the next commit. It will normally point to a head, e.g. `master`,
 which is what the `HEAD -> master` represents in the previous `$ git show`:
 
-```
+```bash
 $ cat .git/HEAD
 ref: refs/heads/master
 ```
@@ -966,7 +966,8 @@ may only update it with each release to end-users. See [further
 reading](#further-reading) for some examples.
 
 You can add and list branches with `$ git branch`, and switch which one you're
-with `$ git switch`:
+with `$ git switch`. Switching a branch will also update the index to match the
+target:
 
 ```bash
 # Create a new branch from the current HEAD, call it "my-branch"
@@ -975,18 +976,22 @@ $ git branch
 * master
   my-branch
 
+# Branching has created a new head ref called my-branch
 $ tree .git/refs/heads
 .git/refs/heads/
 ├── master
 └── my-branch
 
+# Both heads point to the first commit, "Add file1.txt"
 $ cat .git/refs/heads/*
-d8bcda2bb26dfbd50c6f07e4aabb1aef9be44594
-d8bcda2bb26dfbd50c6f07e4aabb1aef9be44594
+173bb18cd1059b1efb048dc32442eb34b36c78a4
+173bb18cd1059b1efb048dc32442eb34b36c78a4
 
+# HEAD still points to master
 $ cat .git/HEAD
 ref: refs/heads/master
 
+# Switching updates HEAD to point to my-branch
 $ git switch my-branch
 Switched to branch 'my-branch'
 
@@ -999,7 +1004,7 @@ At this point we have a single commit, which is pointed to by the heads of both
 
 ![
 A graph displaying the current state commit history of the repository. A single
-box labeled d8bcda2 has 3 labels pointing at it: heads/master, tags/first, and
+box labeled 173bb18 has 3 labels pointing at it: heads/master, tags/first, and
 heads/my-branch. Another label, HEAD, points to heads/my-branch.
 ](branch.svg
 "Graph of the commit history after creating the new
@@ -1015,40 +1020,43 @@ Let's add a new commit while we're on `my-branch`:
 
 ```bash
 # Use the --allow-empty option so we don't need to commit any changes
-$ git commit --allow-empty --message "Commit 2"
-[my-branch 6679b16] Commit 2
+$ git commit --allow-empty --message "Commit on my-branch"
+[my-branch 630d4e3] Commit on my-branch
 
+# HEAD still points to my-branch
 $ cat .git/HEAD
 ref: refs/heads/my-branch
 
+# master still points to the first commit, "Add file1.txt"
 $ cat .git/refs/heads/master
-d8bcda2bb26dfbd50c6f07e4aabb1aef9be44594
+173bb18cd1059b1efb048dc32442eb34b36c78a4
 
+# my-branch now points to the new commit, "Commit on my-branch"
 $ cat .git/refs/heads/my-branch
-6679b1647570256d0219cd4b5fda500aba4cc203
+630d4e31ff361999100a45bd38005bc01ac2f935
 
 # List HEAD followed by its chain of ancestors
 # --oneline gives us a single-line summary
-$ git log --oneline
-d86ecf9 (HEAD -> master) Commit 3
-d8bcda2 (tag: first) Commit 1
+$ git log --oneline --all
+630d4e3 (HEAD -> my-branch) Commit on my-branch
+173bb18 (tag: first, master) Add file1.txt
 ```
 
-Now we've got a new commit, `6679b16`, whose parent is `d8bcda2`. Since HEAD
-was pointing to `heads/my-branch`, Git updated this head to point to the new
-commit, so it continues to track the tip of the branch. Note that
-`heads/master` and `tags/first` both continue to point to the original commit
-`d8bcda2`, and `HEAD` still points to `heads/my-branch`:
+Now we've got a new commit, `630d4e3`, whose parent is the first commit,
+`173bb18`. Since HEAD was pointing to `heads/my-branch`, Git updated this head
+to point to the new commit, so it continues to track the tip of the branch. Note
+that `heads/master` and `tags/first` both continue to point to the original
+commit `173bb18`, and `HEAD` still points to `heads/my-branch`:
 
 ![
 The commit history after the new commit on my-branch. A new commit labeled
-6679b16 points to d8bcda2. The ref heads/my-branch has moved to point to the new
-6679b16, and HEAD continues to point to heads/my-branch. The refs heads/master
-and tags/first still point to d8bcda2.
+630d4e3 points to 173bb18. The ref heads/my-branch has moved to point to the new
+630d4e3, and HEAD continues to point to heads/my-branch. The refs heads/master
+and tags/first still point to 173bb18.
 ](branch-commit.svg
 "Graph of the commit history after creating a new commit on my-branch")
 
-Note that in the diagram, `6679b16` points to its parent - it is the child
+Note that in the diagram, `630d4e3` points to its parent - it is the child
 commit which refers to its parent(s), not the other way around.
 
 
@@ -1058,15 +1066,23 @@ Let's switch back to `master` and create another commit:
 $ git switch master
 Switched to branch 'master'
 
-$ git commit --allow-empty --message "Commit 3"
-[master d86ecf9] Commit 3
+$ git commit --allow-empty --message "Commit on master"
+[master 0538d0d] Commit on master
+
+# --all includes the tips of all branches
+# --graph visualises ancestry: commits are asterisks, lines show parents
+$ git log --oneline --all --graph
+* 0538d0d (HEAD -> master) Commit on master
+| * 630d4e3 (my-branch) Commit on my-branch
+|/
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 ![
-The commit history after the new commit on master. A new commit labeled d86ecf9
-points to d8bcda2. The ref heads/master points to the new commit, and HEAD
-points to heads/master. heads/my-branch continues to point to 6679b16, and
-tags/first continues to point to d8bcda2.
+The commit history after the new commit on master. A new commit labeled 0538d0d
+points to 173bb18. The ref heads/master points to the new commit, and HEAD
+points to heads/master. heads/my-branch continues to point to 630d4e3, and
+tags/first continues to point to 173bb18.
 ](branch-second-commit.svg
 "Graph of the commit history after creating a new commit on master")
 
@@ -1081,43 +1097,49 @@ collisions between branches until you're ready to _merge_ your changes.
 
 ### Merge commits
 
-Once you're happy with the state of your branch and want to share your changes,
-you can rejoin your branch to `master` (or any other branch). This is done with
-`$ git merge`, which will create a new commit with multiple parents to
-effectively join another diverged branch into your current branch.
+Once you're happy with the state of your branch and want to include your changes
+in another branch, you can rejoin your branch to `master` (or any other). This
+is done with `$ git merge`, which will create a new commit with multiple
+parents, combining the changes in all of them:
 
 ```bash
-$ git log --oneline
-d86ecf9 (HEAD -> master) Commit 3
-d8bcda2 (tag: first) Commit 1
+$ git log --oneline --graph
+* 0538d0d (HEAD -> master) Commit on master
+* 173bb18 (tag: first) Add file1.txt
 
 # The merge command shares several options with commit, including --message
 
-$ git merge my-branch --message "Merge 2 & 3"
-Already up to date!
+$ git merge my-branch --message "Merge my-branch into master"
+Already up to date.
 Merge made by the 'recursive' strategy.
 
-$ git log --oneline
-f0d4fc5 (HEAD -> master) Merge 2 & 3
-d86ecf9 Commit 3
-6679b16 (my-branch) Commit 2
-d8bcda2 (tag: first) Commit 1
+# The new commit has two parents:
 
-$ git cat-file -p f0d4
+$ git cat-file -p HEAD
 tree fe89dfe71214c0d45973c551c45a449b3b2f49f7
-parent d86ecf96bff640145dfd49a54a3e6562652827c7
-parent 6679b1647570256d0219cd4b5fda500aba4cc203
-author William <william@example.com> 1615760035 +0000
-committer William <william@example.com> 1615760035 +0000
+parent 0538d0d4729a768be286d2b6b6a00fe7c7211d94
+parent 630d4e31ff361999100a45bd38005bc01ac2f935
+author William <william@example.com> 1609459200 +0000
+committer William <william@example.com> 1609459200 +0000
 
-Merge 2 & 3
+Merge my-branch into master
+
+# Now "Commit on my-branch" also appears in the history of master
+
+$ git log --oneline --graph
+*   031b880 (HEAD -> master) Merge my-branch into master
+|\
+| * 630d4e3 (my-branch) Commit on my-branch
+* | 0538d0d Commit on master
+|/
+* 173bb18 Add file1.txt
 ```
 
 ![
-The commit history after the merge. A new commit labeled f0d4fc5 points to both
-6679b16 and d86ecf9. The ref heads/master points to the new commit, and HEAD
-points to heads/master. heads/my-branch continues to point to 6679b16, and
-tags/first continues to point to d8bcda2.
+The commit history after the merge. A new commit labeled 031b880 points to both
+630d4e3 and 0538d0d. The ref heads/master points to the new commit, and HEAD
+points to heads/master. heads/my-branch continues to point to 630d4e3, and
+tags/first continues to point to 173bb18.
 ](branch-merge.svg
 "Graph of the commit history after merging my-branch into master")
 
@@ -1132,37 +1154,19 @@ to `6679`, as the merge commit was made on the `master` branch, so we say that
 At this point you could continue to add new commits on `my-branch` and `master`,
 and they could be merged together again later.
 
-`$ git log` has a built-in graph feature to help you visualise branches and
-merges in history:
-
-```bash
-$ git log --oneline --graph
-*   f0d4fc5 (HEAD -> master) Merge 2 & 3
-|\
-| * 6679b16 (my-branch) Commit 2
-* | d86ecf9 Commit 3
-|/
-* d8bcda2 (tag: first) Commit 1
-```
-
-Asterisks represent individual commits, and the connecting lines show their
-parents. You can add the `--all` option to display commits from all branches,
-rather than solely the ancestors of your current HEAD.
-
-
 At this point you can delete your branch:
 
 ```bash
 $ git branch --delete my-branch
-Deleted branch my-branch (was 6679b16).
+Deleted branch my-branch (was 630d4e3).
 
 $ git log --oneline --graph
-*   f0d4fc5 (HEAD -> master) Merge 2 & 3
+*   031b880 (HEAD -> master) Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 Add file1.txt
 ```
 
 ![
@@ -1192,8 +1196,8 @@ For an example, let's create a new commit on another branch:
 $ git switch --create my-branch
 Switched to a new branch 'my-branch'
 
-$ git commit --allow-empty --message "Commit 4"
-[my-branch 83ff9ad] Commit 4
+$ git commit --allow-empty --message "Fast-forward commit"
+[my-branch 10498bd] Fast-forward commit
 
 # Switch back to master
 
@@ -1202,9 +1206,9 @@ Switched to branch 'master'
 ```
 
 ![
-The commit history after the merge. A new commit labeled d86ecf9 points to
-f0d4fc5. The ref heads/my-branch points to the new commit, while the ref
-heads/master and HEAD still point to f0d4fc5.
+The commit history after the merge. A new commit labeled 0538d0d points to
+031b880. The ref heads/my-branch points to the new commit, while the ref
+heads/master and HEAD still point to 031b880.
 ](fast-forward-before.svg
 "Graph of the commit history after creating a new commit on my-branch")
 
@@ -1215,23 +1219,23 @@ into `master` once more:
 
 ```bash
 $ git merge my-branch
-Updating f0d4fc5..83ff9ad
+Updating 031b880..10498bd
 Fast-forward
 
 $ git log --oneline --graph
-* 83ff9ad (HEAD -> master, my-branch) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd (HEAD -> master, my-branch) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 ![
 The commit history after the merge. HEAD now points to heads/master, which
-points to the new commit 83ff9ad.  f0d4fc5. The ref heads/my-branch also points
-to f0d4fc5, and has not changed.
+points to the new commit 10498bd.  031b880. The ref heads/my-branch also points
+to 031b880, and has not changed.
 ](fast-forward.svg
 "Graph of the commit history after merging my-branch into master again, this
 time with a fast-forward.")
@@ -1252,7 +1256,7 @@ Finally, let's delete `my-branch` again, since we're finished with it:
 ```bash
 # Delete my-branch again
 
-$ git branch --delete my-branch Deleted branch my-branch (was 83ff9ad).
+$ git branch --delete my-branch Deleted branch my-branch (was 10498bd).
 ```
 
 Fast-forwarding saves us from creating merge commits when they're unnecessary,
@@ -1262,10 +1266,10 @@ hidden. This may or may not be desirable, so it's worth thinking about when
 deciding between a normal merge and a fast-forward:
 
 ![
-The commit history after the merge. A new commit labeled d86ecf9 points to
-f0d4fc5. The ref heads/my-branch points to the new commit, while the ref
-heads/master and HEAD still point to f0d4fc5. tags/first continues to point to
-d8bcda2.
+The commit history after the merge. A new commit labeled 0538d0d points to
+031b880. The ref heads/my-branch points to the new commit, while the ref
+heads/master and HEAD still point to 031b880. tags/first continues to point to
+173bb18.
 ](fast-forward-delete.svg
 "Graph of the commit history after merging my-branch into master with a
 fast-forward, then deleting my-branch")
@@ -1288,38 +1292,38 @@ Switched to a new branch 'cherrypick-from'
 
 # Create two commits, the first one is empty
 
-$ git commit --allow-empty --message "Cherry-pick 1"
-[cherrypick-from 7b4d6dd] Cherry-pick 1
+$ git commit --allow-empty --message "First cherry-pick commit"
+[cherrypick-from 9147754] First cherry-pick commit
 
 # Whilst the second one adds a new file called file2.txt
 
 $ echo "Some contents" > file2.txt
 $ git add file2.txt
-$ git commit --all --message "Cherry-pick 2"
-[cherrypick-from 4de8826] Cherry-pick 2
+$ git commit --message "Second cherry-pick commit"
+[cherrypick-from cb3c9c2] Second cherry-pick commit
  1 file changed, 1 insertion(+)
  create mode 100644 file2.txt
 
 # Resulting in the following history:
 
-$ git log --oneline --graph --all
-* 4de8826 (HEAD -> cherrypick-from) Cherry-pick 2
-* 7b4d6dd Cherry-pick 1
-* 83ff9ad (master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+$ git log --oneline --graph
+* cb3c9c2 (HEAD -> cherrypick-from) Second cherry-pick commit
+* 9147754 First cherry-pick commit
+* 10498bd (master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 ![
 The commit history after creating two new commits on the cherrypick-from branch.
-Two new commits have been added: 4de8826 which points to d8bcda2, and 7b4d6dd
-which points to 4de8826. The ref heads/cherrypick-from points to the newest
-commit 7b4d6dd, while the ref heads/master and HEAD continue to point to
-83ff9ad.
+Two new commits have been added: cb3c9c2 which points to 173bb18, and 9147754
+which points to cb3c9c2. The ref heads/cherrypick-from points to the newest
+commit 9147754, while the ref heads/master and HEAD continue to point to
+10498bd.
 ](cherrypick-before.svg
 "The commit history after creating two new commits on the cherrypick-from
 branch.")
@@ -1327,7 +1331,7 @@ branch.")
 Now we have a couple of commits that are only on branch `cherrypick-from`. If we
 want to include only one of these commits in another branch, we can cherry-pick
 to copy it. For example, let's create a new branch based on `master` and copy
-the "Cherry-pick 2" commit which creates `file2.txt`:
+the "Second cherry-pick commit" commit which creates `file2.txt`:
 
 ```bash
 # Create and switch another branch based off master, called cherrypick-to
@@ -1335,11 +1339,12 @@ the "Cherry-pick 2" commit which creates `file2.txt`:
 $ git switch --create cherrypick-to master
 Switched to branch 'cherrypick-to'
 
-# Cherry-pick 7b4d6dd: "Cherry-pick 2"
+# Use cherry-pick on the head of cherrypick-from
+# i.e. cb3c9c2: "Second cherry-pick commit"
 
-$ git cherry-pick 7b4d6dd
-[cherrypick-to 6a8f027] Cherry-pick 2
- Date: Sun Apr 11 13:48:31 2021 +0100
+$ git cherry-pick cherrypick-from
+[cherrypick-to a9923b0] Second cherry-pick commit
+ Date: Fri Jan 1 00:00:00 2021 +0000
  1 file changed, 1 insertion(+)
  create mode 100644 file2.txt
 
@@ -1347,37 +1352,37 @@ $ cat file2.txt
 Some contents
 
 $ git log --oneline --graph --all
-* 6a8f027 (HEAD -> cherrypick-to) Cherry-pick 1
-| * 7b4d6dd (cherrypick-from) Cherry-pick 2
-| * 4de8826 Cherry-pick 1
+* cb3c9c2 (cherrypick-from) Second cherry-pick commit
+* 9147754 First cherry-pick commit
+| * a9923b0 (HEAD -> cherrypick-to) Second cherry-pick commit
 |/
-* 83ff9ad (master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd (master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 ![
-The commit history after cherrypicking "Cherry-pick 1" from the branch
-cherrypick-from to the branch cherrypick-to.
-Two new commits have been added: 4de8826 which points to d8bcda2, and 7b4d6dd
-which points to 4de8826. The ref heads/cherrypick-from points to the newest
-commit 7b4d6dd, while the ref heads/master and HEAD continue to point to
-83ff9ad.
+The commit history after cherrypicking "Second cherry-pick commit" from the
+branch cherrypick-from to the branch cherrypick-to.
+Two new commits have been added: cb3c9c2 which points to 173bb18, and 9147754
+which points to cb3c9c2. The ref heads/cherrypick-from points to the newest
+commit 9147754, while the ref heads/master and HEAD continue to point to
+10498bd.
 ](cherrypick.svg
-"The commit history after cherrypicking \"Cherry-pick 1\" from the branch
-cherrypick-from to the branch cherrypick-to")
+"The commit history after cherrypicking \"Second cherry-pick commit\" from the
+branch cherrypick-from to the branch cherrypick-to")
 
 
-Now a "Cherry-pick 2" commit also exists `cherrypick-to`, which has added the
-new `file2.txt`. Note that the cherry-picked commit has a different hash from
-the original, indicating that they are distinct from one another. The parent of
-the new commit is different - even if everything else in the commit was copied
-exactly, the object's hash would differ and thus the commits would be different
-objects.
+Now a "Second cherry-pick commit" commit also exists `cherrypick-to`, which has
+added the new `file2.txt`. Note that the cherry-picked commit has a different
+hash from the original, indicating that they are distinct from one another. The
+parent of the new commit is different - even if everything else in the commit
+was copied exactly, the object's hash would differ and thus the commits would be
+different objects.
 
 ```bash
 # Clean up: delete the cherry-pick branches
@@ -1387,17 +1392,17 @@ $ git switch master
 # "Cherry-pick" commits to be lost
 
 $ git branch --delete --force cherrypick-from cherrypick-to
-Deleted branch cherrypick-from (was 7b4d6dd).
-Deleted branch cherrypick-to (was 6a8f027).
+Deleted branch cherrypick-from (was 9147754).
+Deleted branch cherrypick-to (was a9923b0).
 
-$ git log --oneline --graph
-* 83ff9ad (HEAD -> master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+$ git log --oneline --graph --all
+* 10498bd (HEAD -> master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 ### Solving conflicts {#conflicts}
@@ -1410,13 +1415,13 @@ file:
 ```bash
 # Create a new branch and create a commit that file1.txt
 
-$ git switch --create conflicts
-Switched to a new branch 'conflicts'
+$ git switch --create conflict
+Switched to a new branch 'conflict'
 
 $ echo "Changes from the conflict branch" > file1.txt
 
 $ git commit --all --message "Commit on conflict branch"
-[conflicts ebc327a] Commit on conflict branch
+[conflict 9cbabbf] Commit on conflict branch
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 # Switch back to master and add a commit that modifies file1.txt
@@ -1424,19 +1429,21 @@ $ git commit --all --message "Commit on conflict branch"
 $ git switch master
 Switched to branch 'master'
 
-$ echo "Changes from the master branch" > file1.txt
-$ git commit --all --message "Commit on master branch"
+$ echo "Changes from master" > file1.txt
+$ git commit --all --message "Conflict on master"
+[master 3b9e2b8] Conflict on master
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-# Attempt to merge in the conflicts branch
+# Attempt to merge in the conflict branch
 
-$ git merge conflicts
+$ git merge conflict
 Auto-merging file1.txt
 CONFLICT (content): Merge conflict in file1.txt
-Automatic merge failed; fix conflicts and then commit the result.
+Automatic merge failed; fix conflict and then commit the result.
 ```
 
 Git pauses during the merge to alert us - it has tried to automatically merge
-the changes that branch `conflicts` has made to `file1.txt`, but failed. This is
+the changes that branch `conflict` has made to `file1.txt`, but failed. This is
 what we call a conflict. If we check `$ git status`, we can see that we are in a
 new state with "unmerged" files:
 
@@ -1444,7 +1451,7 @@ new state with "unmerged" files:
 $ git status
 On branch master
 You have unmerged paths.
-  (fix conflicts and run "git commit")
+  (fix conflict and run "git commit")
   (use "git merge --abort" to abort the merge)
 
 Unmerged paths:
@@ -1463,14 +1470,14 @@ different blobs for `file1.txt`:
 ```bash
 $ git ls-files --stage
 100644 1ed6543483aafc93c5323daea1860bd7a29857d4 1       file1.txt
-100644 919d56c17043cc095148fda4f90a5c272bb213a2 2       file1.txt
+100644 4c573990878e6ae6f463ce0ab81b6eac635af26b 2       file1.txt
 100644 a4e9201a54a9db3b35b39a09ded144328e5c837a 3       file1.txt
 
 $ git show 1ed6543483aafc93c5323daea1860bd7a29857d4
 Some contents
 
-$ git show 919d56c17043cc095148fda4f90a5c272bb213a2
-Changes from the master branch
+$ git show 4c573990878e6ae6f463ce0ab81b6eac635af26b
+Changes from master
 
 $ git show a4e9201a54a9db3b35b39a09ded144328e5c837a
 Changes from the conflict branch
@@ -1478,7 +1485,7 @@ Changes from the conflict branch
 
 The first blob is the original contents of `file1.txt`, before either branch
 applied the changes that are causing the conflict. The second is the contents of
-the file in the target branch, `master`, and the third from branch `conflicts`.
+the file in the target branch, `master`, and the third from branch `conflict`.
 
 Inside the repository, there are also a number of files that Git uses to track
 information about the current merge:
@@ -1504,13 +1511,13 @@ $ tree -L 1 .git
 ```
 
 `MERGE_HEAD` contains the name of the commit currently being merged into the
-target branch. In this case, it contains the name of the tip of `conflicts`.
+target branch. In this case, it contains the name of the tip of `conflict`.
 Like `HEAD`, despite not being stored in `.git/refs`, `MERGE_HEAD` is a valid
 ref: 
 
 ```bash
 $ git show MERGE_HEAD
-commit ebc327adeefd8189cf63e01b40697a9063de519e (conflicts)
+commit 9cbabbfdeefd8189cf63e01b40697a9063de519e (conflict)
 Author: William <william@example.com>
 Date:   Sat Apr 17 12:13:11 2021 +0100
 
@@ -1536,7 +1543,7 @@ commit 95f682d4a83d7fd55f35dc09e9db6e403639b81c (HEAD -> master)
 Author: William <william@example.com>
 Date:   Sat Apr 17 12:14:18 2021 +0100
 
-    Commit on master branch
+    Conflict on master
 
 diff --git a/file1.txt b/file1.txt
 index 1ed6543..919d56c 100644
@@ -1544,7 +1551,7 @@ index 1ed6543..919d56c 100644
 +++ b/file1.txt
 @@ -1 +1 @@
 -Some contents
-+Changes from the master branch
++Changes from master
 ```
 
 Both of these commits will be used as parents of the merge commit once all
@@ -1558,10 +1565,10 @@ changes:
 
 ```diff
 <<<<<<< HEAD
-Changes from the master branch
+Changes from master
 =======
 Changes from the conflict branch
->>>>>>> conflicts
+>>>>>>> conflict
 ```
 
 The lines beginning with `<`, `=`, and `>` are called _conflict markers_, and
@@ -1570,7 +1577,7 @@ section of a conflict area is between the begin marker line `<<<` and `===`, and
 is labelled with the ref or commit (in this case, `HEAD`). This label indicates
 where those changes have come from. Similarly, the lines between `===` and the
 ending marker `>>>` are the contents of the other ref or commit in this
-conflict, in this case the tip of `conflicts`.
+conflict, in this case the tip of `conflict`.
 
 Generally, "our" changes are in the first section, and "their" changes are in
 the second section. In a merge, "our" changes are from the current branch which
@@ -1600,7 +1607,7 @@ $ git commit
 You'll be prompted for a commit message as usual:
 
 ```MERGE_MSG
-Merge branch 'conflicts'
+Merge branch 'conflict'
 
 # Conflicts:
 #	file1.txt
@@ -1622,22 +1629,22 @@ Merge branch 'conflicts'
 After you save and quit your editor, the merge commit will be created:
 
 ```bash
-[master 084e38e] Merge branch 'conflicts'
+[master 7c5b805] Merge branch 'conflict'
 
 $ git show
-commit 084e38e6effbd4479f600de9a9b6b423ad1c0cb5 (HEAD -> master)
-Merge: 95f682d ebc327a
+commit 7c5b8052af615dfc4a672ca4fe937f29db8c1348 (HEAD -> master)
+Merge: 3b9e2b8 9cbabbf
 Author: William <william@example.com>
-Date:   Sat Apr 17 18:56:29 2021 +0100
+Date:   Fri Jan 1 00:00:00 2021 +0000
 
-    Merge branch 'conflicts'
+    Merge branch 'conflict'
 
 diff --cc file1.txt
-index 919d56c,a4e9201..345e6ae
+index 4c57399,a4e9201..7c35f44
 --- a/file1.txt
 +++ b/file1.txt
 @@@ -1,1 -1,1 +1,1 @@@
-- Changes from the master branch
+- Changes from master
  -Changes from the conflict branch
 ++Changes after merging
 ```
@@ -1649,14 +1656,15 @@ applied to both the contents from `master` and `conflict`, followed by the new
 change which replaced both. This is a _combined diff_, showing the change that
 the new commit introduces in comparison to all of its
 parents.[^git-combined-diff] If we kept the contents from either `master` or
-`conflicts` the diff would be empty; technically the merge would have introduced
+`conflict` the diff would be empty; technically the merge would have introduced
 no new changes. In that case, you could instead use `$ git diff <merge
 commit>..<merge-commit>^` to show changes that the merge introduced into the
 target branch. I'll explain this syntax in the next section.
 
 ```bash
 # Delete the new branch to clean up
-$ git branch --delete conflicts
+$ git branch --delete conflict
+Deleted branch conflict (was 9cbabbf).
 ```
 
 ## Exploring history and branches
@@ -1666,43 +1674,43 @@ $ git branch --delete conflicts
 `$ git reset` changes the current HEAD (or the current branch's head) to the
 specified target, and optionally affects the staging area and working tree.
 Manually changing refs is handy in situations where you want to manipulate
-history to, for example, undo a commit or update a branch to match another
+history to, for example, undo a commit, or to update a branch to match another
 branch.
 
 To undo the commits made during the conflicts example, we can reset back to
-commit 4:
+`10498bd`, "Fast-forward commit":
 
 ```bash
 $ git log --oneline --graph
-*   df0ec89 (HEAD -> master) Merge branch 'conflicts'
+*   7c5b805 (HEAD -> master) Merge branch 'conflict'
 |\
-| * ebc327a Commit on conflict branch
-* | 95f682d Commit on master branch
+| * 9cbabbf Commit on conflict branch
+* | 3b9e2b8 Conflict on master
 |/
-* 83ff9ad Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 
-$ git reset 83ff9ad # "Commit 4"
+$ git reset 10498bd # "Fast-forward commit"
 Unstaged changes after reset:
 M       file1.txt
 
 $ git log --oneline --graph
-* 83ff9ad (HEAD -> master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd (HEAD -> master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 By default, `$ git reset` won't affect the working tree, so `file1.txt` keeps
-the contents it had in `df0ec89`. This is called a "mixed" reset. Git lists
+the contents it had in `7c5b805`. This is called a "mixed" reset. Git lists
 `file1.txt` under "Unstaged changes after reset" to indicate this file doesn't
 match the staging area after the reset. 
 
@@ -1736,7 +1744,7 @@ Finally, a hard reset using `--hard` will set everything to match the target:
 HEAD, the staging area, and the working tree:
 
 ```bash
-$ git reset --hard 83ff9ad # "Commit 4"
+$ git reset --hard 10498bd # "Fast-forward commit"
 
 $ cat file1.txt
 Some contents
@@ -1746,17 +1754,17 @@ On branch master
 nothing to commit, working tree clean
 
 $ git log --oneline --graph
-* 83ff9ad (HEAD -> master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd (HEAD -> master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
-And now we're back to commit 4, as if none of the conflict merging had ever
-happened!
+And now we're back to "Fast-forward commit", as if the conflict merging had
+never happened!
 
 ### Referring to commits by ancestry
 
@@ -1767,19 +1775,19 @@ ancestors of a ref:
 ```bash
 # "The parent of HEAD"
 $ git show --oneline HEAD^
-f0d4fc5 Merge 2 & 3
+031b880 Merge my-branch into master
 
 # "The grandparent of HEAD"
 $ git show --oneline HEAD^^
-d86ecf9 Commit 3
+0538d0d Commit on master
 ```
 
 The `^` (caret) character means "parent of", so repeating the character will
 traverse as many commits as you want.
 
-Note how commits with multiple parents are handled: `HEAD^^` shows "Commit 3",
-despite the merge commit also having "Commit 2" as a parent. This is because the
-first parent is implicitly chosen, for merge commits this is a commit on the
+Note how commits with multiple parents are handled: `HEAD^^` shows "Commit on master",
+despite the merge commit also having "Commit on my-branch" as a parent. This is because the
+first parent is implicitly chosen - for merge commits this is a commit on the
 branch that was merged into.
 
 So `^` really means _first_ parent. To manually choose which parent you want,
@@ -1788,7 +1796,7 @@ use a number following the `^` (e.g. `^2` means "second parent"):
 ```bash
 # "Second parent of the parent of HEAD"
 $ git show --oneline HEAD^^2
-6679b16 Commit 2
+630d4e3 Commit on my-branch
 ```
 
 <!-- TODO: diagram -->
@@ -1803,11 +1811,11 @@ times:
 ```bash
 # "The first grandparent of HEAD"
 $ git show --oneline HEAD^^
-d86ecf9 Commit 3
+0538d0d Commit on master
 
 # "The grandparent of HEAD" again
 $ git show --oneline HEAD~2
-d86ecf9 Commit 3
+0538d0d Commit on master
 ```
 
 You can combine both systems to get to any commit you want:
@@ -1816,11 +1824,11 @@ You can combine both systems to get to any commit you want:
 # Traverse the second parent of the merge commit to get the first commit
 # First parent -> second parent -> first parent
 $ git show --oneline --no-patch HEAD~^2^
-d8bcda2 (tag: first) Commit 1
+173bb18 (tag: first) Add file1.txt
 
 # The same path: ^ and ~ can be substituted if no numbers are appended
 $ git show --oneline --no-patch HEAD^^2~
-d8bcda2 (tag: first) Commit 1
+173bb18 (tag: first) Add file1.txt
 ```
 
 ### Garbage collection and the reflog {#reflog}
@@ -1837,11 +1845,11 @@ These are stored in `.git/logs`.
 
 ```bash
 $ git reflog
-83ff9ad (HEAD -> master) HEAD@{0}: reset: moving to 83ff9ad
-d8bcda2 (tag: first) HEAD@{1}: reset: moving to HEAD
-d8bcda2 (tag: first) HEAD@{2}: reset: moving to HEAD
-d8bcda2 (tag: first) HEAD@{3}: reset: moving to first
-83ff9ad (HEAD -> master) HEAD@{4}: commit: Commit 4
+10498bd (HEAD -> master) HEAD@{0}: reset: moving to 10498bd
+173bb18 (tag: first) HEAD@{1}: reset: moving to HEAD
+173bb18 (tag: first) HEAD@{2}: reset: moving to HEAD
+173bb18 (tag: first) HEAD@{3}: reset: moving to first
+10498bd (HEAD -> master) HEAD@{4}: commit: Fast-forward commit
 ...
 ```
 
@@ -1853,10 +1861,10 @@ the format `ref@{offset}`, with older entries using larger offsets:
 ```bash
 # HEAD@{0} is equivalent to HEAD
 $ git show --oneline HEAD@{0}
-83ff9ad (HEAD -> master) Commit 4
+10498bd (HEAD -> master) Fast-forward commit
 
 $ git show --oneline HEAD@{1}
-d8bcda2 (tag: first) Commit 1
+173bb18 (tag: first) Add file1.txt
 ```
 
 A reflog is kept for each head - so as long as an unreachable commit is
@@ -1890,28 +1898,28 @@ Changes not staged for commit:
         modified:   file1.txt
 
 $ git stash
-Saved working directory and index state WIP on master: 83ff9ad Commit 4
+Saved working directory and index state WIP on master: 10498bd Fast-forward commit
 
 $ cat file1.txt
 Some contents
 
 $ git stash list
-stash@{0}: WIP on master: 83ff9ad Commit 4
+stash@{0}: WIP on master: 10498bd Fast-forward commit
 ```
 
 Git has added a `stash` ref that points to a commit:
 
 ```bash
 $ cat .git/refs/stash
-081d3df73d57aa55efe191164539c85c5966e8e2
+77a35513527e68bdd2adef9a9278608cda19e6a5
 
 $ git show stash
-commit 081d3df73d57aa55efe191164539c85c5966e8e2 (refs/stash)
-Merge: 83ff9ad 0bcec6c
+commit 77a35513527e68bdd2adef9a9278608cda19e6a5 (refs/stash)
+Merge: 10498bd 943a226
 Author: William <william@example.com>
 Date:   Sat Mar 27 21:40:01 2021 +0000
 
-    WIP on master: 83ff9ad Commit 4
+    WIP on master: 10498bd Fast-forward commit
 
 diff --cc file1.txt
 index 1ed6543,1ed6543..29b2192
@@ -1924,33 +1932,33 @@ index 1ed6543,1ed6543..29b2192
 # The stash commit is a merge commit, merging another commit into the current
 # head of master. Here's the commit it's merging:
 
-$ git show 0bcec6c
-commit 0bcec6ce392ea096eb062cba49bda341f6f4a9ed
+$ git show 943a226
+commit 943a226ff623b6a077084ff09699234903d80a84
 Author: William <william@example.com>
-Date:   Sat Mar 27 21:40:01 2021 +0000
+Date:   Fri Jan 1 00:00:00 2021 +0000
 
-    index on master: 83ff9ad Commit 4
+    index on master: 10498bd Fast-forward commit
 
 $ git log --oneline --graph stash
-*   081d3df (refs/stash) WIP on master: 83ff9ad Commit 4
+*   77a3551 (refs/stash) WIP on master: 10498bd Fast-forward commit
 |\
-| * 0bcec6c index on master: 83ff9ad Commit 4
+| * 943a226 index on master: 10498bd Fast-forward commit
 |/
-* 83ff9ad (HEAD -> master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd (HEAD -> master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 ![
 The commit history after stashing. There are two new commits: 
-"index on master..." named 0bcec6c, whose parent is
-83ff9ad, and "WIP on master..." named 081d3df which is a merge commit pointing
-to 83ff9ad and 0bcec6c. The ref refs/stash points to the "WIP on master" commit,
-081d3df. The ref heads/master and HEAD continue to point to 83ff9ad.
+"index on master..." named 943a226, whose parent is
+10498bd, and "WIP on master..." named 77a3551 which is a merge commit pointing
+to 10498bd and 943a226. The ref refs/stash points to the "WIP on master" commit,
+77a3551. The ref heads/master and HEAD continue to point to 10498bd.
 ](stash.svg
 "The commit history after stashing on master")
 
@@ -1966,7 +1974,7 @@ You can list your saved stashes with `$ git stash list`:
 
 ```bash
 $ git stash --list
-stash@{0}: WIP on master: 83ff9ad Commit 4
+stash@{0}: WIP on master: 10498bd Fast-forward commit
 ```
 
 The list uses the syntax for ref history, which hints that the stash system
@@ -1975,7 +1983,7 @@ inspect the reflog in `.git/logs/refs/stash`:
 
 ```bash
 $ git reflog stash
-081d3df (refs/stash) stash@{0}: WIP on master: 83ff9ad Commit 4
+77a3551 (refs/stash) stash@{0}: WIP on master: 10498bd Fast-forward commit
 ```
 
 Older stash commits are listed later in the reflog, and have a larger index.
@@ -1998,7 +2006,7 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 
 $ git stash list
-stash@{0}: WIP on master: 83ff9ad Commit 4
+stash@{0}: WIP on master: 10498bd Fast-forward commit
 ```
 After applying it, the stash entry is kept in the log, in case you want to keep
 it around. You can use `$ git stash drop` to remove the top stash commit from
@@ -2014,10 +2022,10 @@ Saved working directory and index state On master: Stash 0
 
 $ git stash list
 stash@{0}: On master: Stash 0
-stash@{0}: WIP on master: 83ff9ad Commit 4
+stash@{1}: WIP on master: 10498bd Fast-forward commit
 
 $ git stash drop 1
-Dropped refs/stash@{1} (f2980f78975c299232772661309c2cd864aecac7)
+Dropped refs/stash@{1} (77a35513527e68bdd2adef9a9278608cda19e6a5)
 
 $ git stash list
 stash@{0}: On master: Stash 0
@@ -2041,7 +2049,7 @@ To apply and drop a stash in one command, use `$ git stash pop`:
 # $ git stash push is the same as $ git stash
 $ echo "something" >> file1.txt
 $ git stash push
-Saved working directory and index state WIP on master: 83ff9ad Commit 4
+Saved working directory and index state WIP on master: 10498bd Fast-forward commit
 
 $ git stash pop
 On branch master
@@ -2051,7 +2059,7 @@ Changes not staged for commit:
         modified:   file1.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
-Dropped refs/stash@{0} (081d3df73d57aa55efe191164539c85c5966e8e2)
+Dropped refs/stash@{0} (77a35513527e68bdd2adef9a9278608cda19e6a5)
 
 $ git stash list
 
@@ -2106,60 +2114,62 @@ message to edit:
 
 ```bash
 $ rm file1.txt
-$ git commit --amend
+$ git commit --all --amend
 ```
 You'll then be presented with this in your editor:
 
 ```COMMIT_EDITMSG
-Commit 4
+Fast-forward commit
 
 # Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
 #
-# Date:      Tue Mar 16 21:34:47 2021 +0000
+# Date:      Fri Jan 1 00:00:00 2021 +0000
 #
 # On branch master
 # Changes to be committed:
 #	deleted:    file1.txt
 #
 ```
+
 After saving and quitting, your amend will be applied:
 
 ```bash
-[master b9935da] Commit 4
- Date: Tue Mar 16 21:34:47 2021 +0000
+[master 33cda34] Fast-forward commit
+ Date: Fri Jan 1 00:00:00 2021 +0000
  1 file changed, 1 deletion(-)
  delete mode 100644 file1.txt
 
 $ git log --oneline --graph
-* b9935da (HEAD -> master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 33cda34 (HEAD -> master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 
-# b9935da has replaced 83ff9ad
+# 33cda34 has replaced 10498bd
 
-$ git cat-file -p b9935da
+$ git cat-file -p 33cda34
 
 tree 4b825dc642cb6eb9a060e54bf8d69288fbee4904
-parent f0d4fc50ace540f32c1397ca6f291a571ed3560a
-author William <william@example.com> 1615930487 +0000
-committer William <william@example.com> 1617739956 +0100
+parent 031b880dda2a0afa441418fb494c598900092d22
+author William <william@example.com> 1609459200 +0000
+committer William <william@example.com> 1609459200 +0000
 
-Commit 4
+Fast-forward commit
 
-# Undo the amend by resetting back to 83ff9ad
+# Undo the amend by resetting back to 10498bd
+# You could also reset to HEAD@{1}, which will also point to 10498bd
 
-$ git reset 83ff9ad
-HEAD is now at 83ff9ad Commit 4
+$ git reset --hard 10498bd
+HEAD is now at 10498bd Fast-forward commit
 ```
 
-Amending keeps the authored date from the commit that was amended, but
-notice that the _committer_ line has used a later date: the point in time at
-which the new commit was created.
+The amended commit keeps the _author_ from the original commit, but
+the _committer_ will store new information, i.e. who amended the commit, and
+when.
 
 ### Rebasing
 
@@ -2184,33 +2194,31 @@ $ git switch --create rebasing first
 Switched to a new branch 'rebasing'
 
 $ git commit --allow-empty --message "Rebase commit"
-[rebasing 048ccc8] Rebase commit
+[rebasing 3c97d1a] Rebase commit
 
 $ git log --oneline --graph
-* 048ccc8 (HEAD -> rebasing) Rebase commit
-* d8bcda2 (tag: first) Commit 1
+* 3c97d1a (HEAD -> rebasing) Rebase commit
+* 173bb18 (tag: first) Add file1.txt
 
-# Use the --all option to show the tips of all branches
 $ git log --oneline --graph --all
-* 048ccc8 (HEAD -> rebasing) Rebase commit
-| * 83ff9ad (master) Commit 4
-| *   f0d4fc5 Merge 2 & 3
-| |\
-| | * 6679b16 Commit 2
-| |/
-|/|
-| * d86ecf9 Commit 3
+* 33cda34 (master) Fast-forward commit
+*   031b880 Merge my-branch into master
+|\
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+| * 3c97d1a (HEAD -> rebasing) Rebase commit
+|/
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 Here's a clearer visualisation of the commit graph:
 
 ![
 The commit history after creating the new commit on the rebasing branch. A new
-commit 048ccc8 points to d86ecf9. HEAD points to heads/rebasing, and
-heads/rebasing points to 048ccc8. The head for master is unchanged, still
-pointing to 83ff9ad.
+commit 3c97d1a points to 0538d0d. HEAD points to heads/rebasing, and
+heads/rebasing points to 3c97d1a. The head for master is unchanged, still
+pointing to 10498bd.
 ](rebase-before.svg
 "The commit history after creating the new commit on the rebasing branch")
 
@@ -2222,14 +2230,14 @@ $ git rebase master
 Successfully rebased and updated refs/heads/rebasing.
 
 $ git log --oneline --graph --all
-* fa8eb86 (HEAD -> rebasing) Rebase commit
-* 83ff9ad (master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 3ce5c9d (HEAD -> rebasing) Rebase commit
+* 10498bd (master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 Now our new commit is parented to the tip of `master` instead of the first
@@ -2237,19 +2245,19 @@ commit:
 
 ![
 The commit history after creating the new commit on the rebasing branch. A new
-commit fa8eb86 points to 83ff9ad. HEAD points to heads/rebasing, and
-heads/rebasing points to fa8eb86. heads/master continues to point to 83ff9ad.
-048ccc8, the commit originally created on rebasing, no longer exists.
+commit 3ce5c9d points to 10498bd. HEAD points to heads/rebasing, and
+heads/rebasing points to 3ce5c9d. heads/master continues to point to 10498bd.
+3c97d1a, the commit originally created on rebasing, no longer exists.
 ](rebase.svg
 "The commit history after creating the new commit on the rebasing branch")
 
 ```bash
 # Delete the branch to clean this example up
 # Use the --force option since there are unmerged commits
-# Commit fa8eb86 will become unreachable
+# Commit 3ce5c9d will become unreachable
 $ git switch master
 $ git branch --delete --force rebasing
-Deleted branch rebasing (was fa8eb86).
+Deleted branch rebasing (was 3ce5c9d).
 ```
 
 Note that [conflicts](#conflicts) can occur while commits are being reapplied.
@@ -2286,11 +2294,11 @@ $ git rebase --interactive first
 The following is opened in your editor:
 
 ```git-rebase-todo
-pick d86ecf9 Commit 3 # empty
-pick 6679b16 Commit 2 # empty
-pick 83ff9ad Commit 4 # empty
+pick 0538d0d Commit on master # empty
+pick 630d4e3 Commit on my-branch # empty
+pick 10498bd Fast-forward commit # empty
 
-# Rebase d8bcda2..acd24b9 onto d8bcda2 (3 commands)
+# Rebase 173bb18..33cda34 onto 173bb18 (3 commands)
 #
 # Commands:
 # p, pick <commit> = use commit
@@ -2348,20 +2356,20 @@ instead setting up the commands as you commit. For example:
 
 ```bash
 $ git commit --allow-empty --fixup first
-[master 7630fce] fixup! Commit 1
+[master 4e04c03] fixup! Add file1.txt
 
-# Use --root to rebase from before the first commit in history
+# Use --root to include root (i.e. first) commit in the rebase
 $ git rebase --interactive --autosquash --root
 ```
 
 You'll be presented with the following command list:
 
 ```git-rebase-todo
-pick d8bcda2 Commit 1
-fixup 7630fce fixup! Commit 1 # empty
-pick d86ecf9 Commit 3 # empty
-pick 6679b16 Commit 2 # empty
-pick 83ff9ad Commit 4 # empty
+pick 173bb18 Add file1.txt
+fixup 4e04c03 fixup! Add file1.txt # empty
+pick 0538d0d Commit on master # empty
+pick 630d4e3 Commit on my-branch # empty
+pick 10498bd Fast-forward commit # empty
 ```
 
 In this case the first commit will be amended, and our commit that merged
@@ -2426,13 +2434,13 @@ You can still use a few normal Git commands on a bare repository:
 $ cd remote
 
 $ git log --oneline --graph --all
-* 83ff9ad (HEAD -> master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd (HEAD -> master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 
 # Without a working tree most operations will fail
 
@@ -2500,13 +2508,13 @@ are called _remote-tracking branches_:
 
 ```bash
 $ git log --oneline --graph --all
-* 83ff9ad (HEAD -> master, origin/master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd (HEAD -> master, origin/master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 Logs now show the `origin/master` head alongside `master` for commit 4, showing
@@ -2515,7 +2523,7 @@ that these heads have been synchronised since the last fetch. Note how
 
 ![
 The commit history after fetching from the new remote. The new ref
-remotes/origin/master points to the same commit as heads/master: 83ff9ad.
+remotes/origin/master points to the same commit as heads/master: 10498bd.
 ](remote.svg
 "The commit history after fetching from the new remote")
 
@@ -2579,13 +2587,13 @@ into one which no longer contains that head. For example:
 
 ```bash
 $ git log --oneline --graph --all
-* 83ff9ad (HEAD -> master, origin/master) Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 10498bd (HEAD -> master, origin/master) Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 [1]+  Done                    mako
 ```
 
@@ -2594,27 +2602,31 @@ pointing the same tip commit. If we were to amend the tip commit, this would no
 longer be the case:
 
 ```bash
-$ git commit --amend --allow-empty
-[master 857df84] Commit 4
- Date: Tue Mar 16 21:34:47 2021 +0000
+
+$ rm file1.txt
+$ git commit --all --amend
+[master 33cda34] Fast-forward commit
+ Date: Fri Jan 1 00:00:00 2021 +0000
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 file1.txt
 
 $ git log --oneline --graph --all
-* 857df84 (HEAD -> master) Commit 4
-| * 83ff9ad (origin/master) Commit 4
+* 33cda34 (HEAD -> master) Fast-forward commit
+| * 10498bd (origin/master) Fast-forward commit
 |/
-*   f0d4fc5 Merge 2 & 3
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 ![
 ](remote-rewrite.svg
 "The commit history after creating the new commit on the rebasing branch")
 
-Now in branch `master`, `83ff9ad` has been replaced with `857df84`, so the local
+Now in branch `master`, `10498bd` has been replaced with `33cda34`, so the local
 and remote branches no longer share a common ancestry. We can still force the
 remote to update its head to match our new local head with `$ git push --force`,
 but there's the possibility that someone else has already sent commits to the
@@ -2651,7 +2663,11 @@ cancelling your current merge or rebase, or use the [reflog](#reflog) to (mixed)
 [reset](#reset) back to the commit before you rewrote history:
 
 ```bash
-$ git reset 83ff9ad
+$ git reset 10498bd
+HEAD is now at 10498bd Fast-forward commit
+
+# Or reset --hard (if you want to also reset the working tree and index!)
+$ git reset --hard 10498bd
 ```
 
 You may then have to [cherry-pick](#cherry-pick) any new commits created on
@@ -2663,25 +2679,25 @@ Finally, you can _push_ (i.e. upload) changes to a remote with `$ git push`.
 
 ```bash
 $ git commit --allow-empty --message "Pushed commit"
-[master 4ace86b] Pushed commit
+[master 66d24b9] Pushed commit
 
 $ git push
 Enumerating objects: 1, done.
 Counting objects: 100% (1/1), done.
-Writing objects: 100% (1/1), 842 bytes | 842.00 KiB/s, done.
+Writing objects: 100% (1/1), 184 bytes | 184.00 KiB/s, done.
 Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
-To ../remote/
-   83ff9ad..4ace86b  master -> master
+To ../remote
+   10498bd..66d24b9  master -> master
 
 $ git log --oneline --graph --all
-* 4ace86b (HEAD -> master, origin/master) Pushed commit
-* 83ff9ad Commit 4
-*   f0d4fc5 Merge 2 & 3
+* 66d24b9 (HEAD -> master, origin/master) Pushed commit
+* 10498bd Fast-forward commit
+*   031b880 Merge my-branch into master
 |\
-| * 6679b16 Commit 2
-* | d86ecf9 Commit 3
+| * 630d4e3 Commit on my-branch
+* | 0538d0d Commit on master
 |/
-* d8bcda2 (tag: first) Commit 1
+* 173bb18 (tag: first) Add file1.txt
 ```
 
 This uploads the head of the current branch and any associated objects, then

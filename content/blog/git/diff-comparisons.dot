@@ -29,7 +29,7 @@ digraph test {
         subgraph cluster_objects {
             label = "Objects"
 
-            commit [label="commit\nd8bcda2" shape=box]
+            commit [label="commit\n173bb18" shape=box]
             tree [label=<
                 <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
                     <tr>

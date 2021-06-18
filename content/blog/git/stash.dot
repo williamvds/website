@@ -1,19 +1,19 @@
 digraph branch {
     bgcolor = transparent
     color = white
-    ranksep = 0.4
-    node [fontname=monospace, fontsize=12, fontcolor="#eeeeee",
+
+    node [fontname=monospace, fontsize=12, fontcolor="#eeeeee"
           margin="0.06,0.1", height=0, color="#eeeeee"]
     edge [fontcolor="#eeeeee", color="#eeeeee", arrowsize=0.8]
 
     node [shape=box, labeldistance=0.2]
-    "d8bcda2"
-    "6679b16"
-    "d86ecf9"
-    "f0d4fc5"
-    "83ff9ad"
-    "081d3df"
-    "0bcec6c"
+    "173bb18" [label=<<font point-size="10">173bb18</font><br/>Add file1.txt>]
+    "630d4e3" [label=<<font point-size="10">630d4e3</font><br/>Commit on my-branch>]
+    "0538d0d" [label=<<font point-size="10">0538d0d</font><br/>Commit on master>]
+    "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>]
+    "10498bd" [label=<<font point-size="10">10498bd</font><br/>Fast-forward commit>]
+    "77a3551" [label=<<font point-size="10">77a3551</font><br/>WIP on master:<br/>10498bd Fast-forward commit>]
+    "943a226" [label=<<font point-size="10">943a226</font><br/>index on master:<br/>10498bd Fast-forward commit>]
 
     node [shape=none, margin=0.05, height=0]
     HEAD
@@ -24,30 +24,30 @@ digraph branch {
     // master
     {
         edge [weight=2]
-        "d86ecf9" -> "d8bcda2"
-        "f0d4fc5" -> "d86ecf9"
-        "83ff9ad" -> "f0d4fc5"
-        "081d3df" -> "83ff9ad"
+        "0538d0d" -> "173bb18"
+        "031b880" -> "0538d0d"
+        "10498bd" -> "031b880"
+        "77a3551" -> "10498bd"
     }
 
-    "6679b16" -> "d8bcda2"
-    "f0d4fc5" -> "6679b16"
-    "0bcec6c" -> "83ff9ad"
-    "081d3df" -> "0bcec6c"
+    "630d4e3" -> "173bb18"
+    "031b880" -> "630d4e3"
+    "943a226" -> "10498bd"
+    "77a3551" -> "943a226"
 
     {
         rank = same
-        first -> "d8bcda2" [constraint=false]
+        first -> "173bb18" [constraint=false]
     }
 
     {
         rank = same
         HEAD -> master [constraint=false]
-        master -> "83ff9ad" [constraint=false]
+        master -> "10498bd" [constraint=false]
     }
 
     {
         rank = same
-        stash -> "081d3df" [constraint=false]
+        stash -> "77a3551" [constraint=false]
     }
 }

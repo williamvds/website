@@ -1,27 +1,29 @@
 digraph branch {
     bgcolor = transparent
     color = white
-    rankdir = RL
-    ranksep = 0
-    node [fontname=monospace, fontsize=12, fontcolor="#eeeeee",
-          margin="0.06,0.1", height=0, color="#eeeeee"]
-    edge [fontcolor="#eeeeee", color="#eeeeee", arrowsize=0.8]
 
-    rank = same
+    node [fontname=monospace fontsize=12 fontcolor="#eeeeee" margin="0.06,0.1"
+          shape=plain color="#eeeeee"]
+    edge [fontcolor="#eeeeee" color="#eeeeee" arrowsize=0.8]
 
-    node [shape=box, labeldistance=0.2]
-    "d8bcda2"
+    node [shape=box labeldistance=0.2]
+    "173bb18" [label=<<font point-size="10">173bb18</font><br/>Add file1.txt>]
 
-    node [shape=none, margin=0.05, height=0]
+    node [shape=none margin=0.05 height=0]
     HEAD
     my_branch [label="heads/my-branch"]
     master [label="heads/master"]
     first [label="tags/first"]
 
     {
+        rank = same
         HEAD -> my_branch
-        my_branch -> "d8bcda2"
-        master -> "d8bcda2" [constraint=false]
-        first -> "d8bcda2":w [constraint=false]
+        my_branch -> "173bb18"
+        master -> "173bb18" [constraint=false]
+        first -> "173bb18" [constraint=false]
     }
+
+    // Fix spline for first -> 173bb18 by adding a node above
+    invisible [style=invis]
+    invisible -> "173bb18" [style=invis]
 }

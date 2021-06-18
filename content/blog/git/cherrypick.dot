@@ -1,21 +1,21 @@
 digraph branch {
     bgcolor = transparent
     color = white
-    rankdir = RL
-    ranksep = 0.2
-    node [fontname=monospace, fontsize=12, fontcolor="#eeeeee",
+
+    node [fontname=monospace, fontsize=12, fontcolor="#eeeeee"
           margin="0.06,0.1", height=0, color="#eeeeee"]
     edge [fontcolor="#eeeeee", color="#eeeeee", arrowsize=0.8]
 
     node [shape=box, labeldistance=0.2]
-    "d8bcda2"
-    "6679b16"
-    "d86ecf9"
-    "f0d4fc5"
-    "83ff9ad"
-    "4de8826"
-    "7b4d6dd"
-    "6a8f027"
+    "173bb18" [label=<<font point-size="10">173bb18</font><br/>Add file1.txt>]
+    "630d4e3" [label=<<font point-size="10">630d4e3</font><br/>Commit on my-branch>]
+    "0538d0d" [label=<<font point-size="10">0538d0d</font><br/>Commit on master>]
+    "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>]
+    "10498bd" [label=<<font point-size="10">10498bd</font><br/>Fast-forward commit>]
+    "9147754" [label=<<font point-size="10">9147754</font><br/>First cherry-pick commit>]
+    "cb3c9c2" [label=<<font point-size="10">cb3c9c2</font><br/>Second cherry-pick commit>]
+    master_invis [style=invis]
+    "a9923b0" [label=<<font point-size="10">a9923b0</font><br/>Second cherry-pick commit>]
 
     node [shape=none, margin=0.05, height=0]
     HEAD
@@ -24,33 +24,34 @@ digraph branch {
     cherrypick_to [label="heads/cherrypick-to"]
     first [label="tags/first"]
 
-    "6679b16" -> "d8bcda2"
-    "d86ecf9" -> "d8bcda2"
-    "f0d4fc5" -> "6679b16"
-    "f0d4fc5" -> "d86ecf9"
-    "83ff9ad" -> "f0d4fc5"
-    "7b4d6dd" -> "83ff9ad"
-    "4de8826" -> "7b4d6dd"
-    "6a8f027" -> "83ff9ad"
+    "630d4e3" -> "173bb18"
+    "0538d0d" -> "173bb18" [weight=2]
+    "031b880" -> "630d4e3"
+    "031b880" -> "0538d0d" [weight=2]
+    "10498bd" -> "031b880" [weight=2]
+    "9147754" -> "10498bd"
+    "cb3c9c2" -> "9147754"
+    "a9923b0" -> "10498bd"
+    master_invis -> "10498bd" [weight=2 style=invis]
 
     {
         rank = same
-        first -> "d8bcda2" [constraint=false]
+        first -> "173bb18" [constraint=false]
     }
 
     {
         rank = same
-        master -> "83ff9ad" [constraint=false]
+        master -> "10498bd" [constraint=false]
     }
 
     {
         rank = same
-        cherrypick_from -> "4de8826"
+        cherrypick_from -> "cb3c9c2" [constraint=false]
     }
 
     {
         rank = same
         HEAD -> cherrypick_to [constraint=false]
-        cherrypick_to -> "6a8f027" [constraint=false]
+        cherrypick_to -> "a9923b0" [constraint=false]
     }
 }

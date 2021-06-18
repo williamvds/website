@@ -1,36 +1,35 @@
 digraph branch {
     bgcolor = transparent
     color = white
-    rankdir = RL
-    ranksep = 0.2
-    node [fontname=monospace, fontsize=12, fontcolor="#eeeeee",
-          margin="0.06,0.1", height=0, color="#eeeeee"]
-    edge [fontcolor="#eeeeee", color="#eeeeee", arrowsize=0.8]
 
-    node [shape=box, labeldistance=0.2]
-    "d8bcda2"
-    "6679b16"
-    "d86ecf9"
-    "f0d4fc5"
+    node [fontname=monospace fontsize=12 fontcolor="#eeeeee"
+          margin="0.06,0.1" height=0 color="#eeeeee"]
+    edge [fontcolor="#eeeeee" color="#eeeeee" arrowsize=0.8]
 
-    node [shape=none, margin=0.05, height=0]
+    node [shape=box labeldistance=0.2]
+    "173bb18" [label=<<font point-size="10">173bb18</font><br/>Add file1.txt>]
+    "630d4e3" [label=<<font point-size="10">630d4e3</font><br/>Commit on my-branch>]
+    "0538d0d" [label=<<font point-size="10">0538d0d</font><br/>Commit on master>]
+    "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>]
+
+    node [shape=none margin=0.05 height=0]
     HEAD
     master [label="heads/master"]
     first [label="tags/first"]
 
-    "6679b16" -> "d8bcda2"
-    "d86ecf9" -> "d8bcda2"
-    "f0d4fc5" -> "6679b16"
-    "f0d4fc5" -> "d86ecf9"
+    "630d4e3" -> "173bb18"
+    "0538d0d" -> "173bb18" [weight=2]
+    "031b880" -> "630d4e3"
+    "031b880" -> "0538d0d" [weight=2]
 
     {
         rank = same
-        first -> "d8bcda2" [constraint=false]
+        first -> "173bb18" [constraint=false]
     }
 
     {
         rank = same
         HEAD -> master [constraint=false]
-        master -> "f0d4fc5" [constraint=false]
+        master -> "031b880" [constraint=false]
     }
 }
