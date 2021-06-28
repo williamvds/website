@@ -14,74 +14,26 @@ table_of_contents = true
 
 ## Introduction
 
-Git is the best version control software I've used, but it's difficult to find a
-tutorial that provides enough understanding. In this article I've tried to
-create my own. Even if you've been using Git for a while, you might just learn a
-thing or two from this - I certainly did while I was writing it. Git has a
-reputation for being an enigma[,](https://xkcd.com/1597) but hopefully, after
-reading this article, it will no longer be such a mystery. You might even
-appreciate it a bit more, I dare say.
+[Git](https://git-scm.com) is the best version control software I've used, but
+it has a reputation for being complex and confusing, in part thanks to confusing
+commands and lackluster documentation. In this article I've tried to create my
+own guide that'll provide readers with an understanding - and hopefully
+confidence - when using Git. Even if you've been a Git user for a while, you
+might learn a thing or two - I certainly did while I was writing this.
 
-I believe understanding some of Git's internal concepts and mechanisms is
-crucial for understanding how to use the tool as a whole. These details are
-normally glossed over by most tutorials, and hidden by the user-friendly Git
-commands and graphical Git clients. Without knowing what Git commands are doing,
-it's easy to get lost when something goes wrong and not know how to recover.
-Instead of hiding them, I'll explain the under-the-hood behaviour while teaching
-the usual Git commands and day-to-day operations.
+I think learning some of Git's internal concepts and mechanisms is crucial
+for understanding how to use the tool as a whole. These details are normally
+hidden by the user-friendly Git commands and graphical Git clients. Without
+knowing what Git commands are doing, it's easy to get lost when something goes
+wrong and not know how to recover. Instead of hiding them, I'll explain the
+some of the under-the-hood behaviour while teaching the day-to-day Git commands.
 
-If you prefer video explanations over long text articles like this I'd recommend
-The Missing Semester's lecture on Git,[^missing-semester-git] _Git For Ages 4
-And Up_ for Git beginners,[^git-ages-4-up] or _Git From the Bits Up_ for those
-who are more experienced.[^git-from-bits-up] This article takes inspiration from
-these, but also tries to expand on what they didn't have time to cover.
-
-### Why is Git?
-
-Git was designed and created by Linus Torvalds, the same mind behind the Linux
-kernel. It was intended to solve the version control woes experienced by
-kernel developers at the time, with the goal of (among other things) being fully
-distributed and resilient against corruption.
-
-Having a distributed system is particularly important when your users are spread
-around the world, working independently from each other, on different things at
-different times. In Git's decentralised model, each user stores a copy of the
-_repository_ on their local machine, which includes all versions of all files.
-
-With the full version history accessible locally, explore, manipulate, and add
-to it easily. You can save your changes without relying on an external server,
-and so reorganise them at your leisure before sharing them with others. You can
-pick a line in any file and find out who last changed it and their reasons for
-doing so. The version history can be searched just like a directory on your
-filesystem, along with change message provided with each version.
-
-Sharing changes in Git is trivial: they can be sent as plain text, or downloaded
-directly from another copy of the repository. Software developers will most
-likely use popular Git platforms like GitHub, GitLab, and Bitbucket to share
-their repositories, but most kernel developers simply send their changes in
-plain text over email.[^linux-mail-archives]
-
-<!--
-### Git vs alternatives
-
-If you've never used version control software like Git before, this section
-might not make much sense to you - feel free to skip to the next section to
-start learning Git.
-
-- The good:
-	- Cheap branching
-	- Popularity (well-earned)
-	- Granular commits
-	- Cheap sub-repositories
-
-- The bad:
-	- More concepts = harder to learn
-	- Merging conflicts
-	- Bad at handling a lot of big files (full history = massive repo)
-	  - git-annex and git-lfs as workarounds
-	- Powerful command-line, but some commands and GUIs hide complexity and
-	  prevent understanding
--->
+If you prefer video explanations over long text articles like this, I'd
+recommend checking out The Missing Semester's lecture on
+Git,[^missing-semester-git] _Git For Ages 4 And Up_ for Git
+beginners,[^git-ages-4-up] or _Git From the Bits Up_ for those who are more
+experienced.[^git-from-bits-up] This article takes inspiration from these, but
+also tries to expand on what they didn't have time to cover.
 
 ## Getting started
 
