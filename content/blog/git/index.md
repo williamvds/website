@@ -634,10 +634,15 @@ diff". Another red line connecting the index and tree fe89dfe is labelled with
 
 ### Skipping the staging area
 
-If the staging area is inconvenient or unnecessary, you can use `$ git commit
---all`. This will immediately stage all tracked files as they currently are in
-the working tree, and commit them. Note that you still need to use `$ git add`
-to track new files that you're committing for the first time.
+If the staging area is inconvenient or unnecessary, you can specify the files
+you want to commit after `$ git commit`, e.g. `$ git commit file1.txt
+file2.txt`. This will immediately commit the contents of these files as they are
+in the working tree.
+
+Alternatively, run `$ git commit --all`. This will immediately stage all tracked
+files as they currently are in the working tree, and commit them. Note that you
+still need to use `$ git add` to track new files that you're committing for the
+first time, or list new files you want to track after `--all`.
 
 ### Staging hunks within a file
 
