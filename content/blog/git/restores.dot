@@ -30,11 +30,12 @@ digraph test {
             }
         }
 
+        HEAD -> commit
+        tree:ne -> index:se [label="$ git restore --staged"
+            style=bold color=red constraint=false labelfloat=true]
         index -> tree [weight=2 style=invis]
     }
 
-    HEAD -> commit
-    index:se -> tree:ne [label="$ git diff --staged"
-        dir=both style=bold color=red constraint=false labelfloat=true]
-    worktree:se -> index:ne [label="$ git diff" dir=both style=bold color=red]
+    worktree:se -> index:ne [label="$ git restore"
+        style=bold color=red dir=back]
 }

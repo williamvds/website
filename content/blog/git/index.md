@@ -515,6 +515,9 @@ Date:   Fri Jan 1 00:00:00 2021 +0000
     Add file1.txt
 ```
 
+This commit is also our current _HEAD_, which means it will be a parent of the
+next commit that is created.
+
 ### Showing your changes
 
 `$ git status` lists the files that have been changed between the previous
@@ -788,7 +791,7 @@ index 1ed6543..77ef57a 100644
 
 If you've staged something and later decided you don't want to include it in the
 next commit, you can use `$ git restore --staged` to reset the staging area to
-match the last commit:
+match HEAD:
 
 ```bash
 $ git status
@@ -812,29 +815,26 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-<!--
-TODO: another diagram here
-
-[ repository
-	[ staging area [ file1.txt "Some contents" ] ]
-      ^              ^
-      |              | git restore -staged
-      |      [ tree [ file1.txt "Some contents" ] ] ]
-      |                    |
-      | git add            | git restore file1.txt
-      |                    v
-[ worktree [ file1.txt "Some contents"        ] ]
--->
-
 Use the `--patch` option to interactively pick which hunks to unstage,
 similar to `$ git add`.
+
 You can use `$ git restore` to restore the contents of the files in your working
-tree, but note that this will delete your changes from the working tree, which
-may not have been saved in the repository if you haven't staged or committed it.
+tree to match the staging area. Note that this will delete your changes from the
+working tree, which may not have been saved in the repository if you haven't
+staged or committed it.
 
 Finally, if you want to remove a file in a commit, you can remove the file from
 your working tree and subsequently `$ git add` to stage the removal, or simply
 use `$ git rm` to remove and stage in one command.
+
+![
+The working tree is shown as an independent box. The repository is shown as a
+box containing the index, HEAD, and a set of objects containing a commit and a
+tree. HEAD points to the commit object, which points to the tree. A red line
+connects the working tree and the index, labelled with "git diff". Another red
+line connecting the index and tree object, labelled with "git diff --staged".
+](restores.svg
+"Graph showing the restore commands and what they restore")
 
 ## refs: heads, tags and HEAD
 
