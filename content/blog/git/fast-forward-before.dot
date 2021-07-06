@@ -11,7 +11,8 @@ digraph branch {
     "630d4e3" [label=<<font point-size="10">630d4e3</font><br/>Commit on my-branch>]
     "0538d0d" [label=<<font point-size="10">0538d0d</font><br/>Commit on master>]
     "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>]
-    "10498bd" [label=<<font point-size="10">10498bd</font><br/>Fast-forward commit>]
+    "10498bd" [label=<<font point-size="10">10498bd</font><br/>Fast-forward commit>
+        color=red]
     master_invis [style=invis]
 
     node [shape=none, margin=0.05, height=0]
@@ -29,7 +30,7 @@ digraph branch {
     "0538d0d" -> "173bb18" [weight=2]
     "031b880" -> "630d4e3"
     "031b880" -> "0538d0d" [weight=2]
-    "10498bd" -> "031b880" [weight=2]
+    "10498bd" -> "031b880" [weight=2 color=red]
     master_invis -> "031b880" [weight=2 style=invis]
 
     {
@@ -40,6 +41,6 @@ digraph branch {
 
     {
         rank = same
-        my_branch -> "10498bd"
+        my_branch -> "10498bd" [color=red]
     }
 }

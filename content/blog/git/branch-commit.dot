@@ -8,7 +8,8 @@ digraph branch {
 
     node [shape=box labeldistance=0.2]
     "173bb18" [label=<<font point-size="10">173bb18</font><br/>Add file1.txt>]
-    "630d4e3" [label=<<font point-size="10">630d4e3</font><br/>Commit on my-branch>]
+    "630d4e3" [label=<<font point-size="10">630d4e3</font><br/>Commit on my-branch>
+        color=red]
     master_invis [style=invis]
 
     node [shape=none margin=0.05 height=0]
@@ -17,7 +18,7 @@ digraph branch {
     master [label="heads/master"]
     first [label="tags/first"]
 
-    "630d4e3" -> "173bb18"
+    "630d4e3" -> "173bb18" [color=red]
     master_invis -> "173bb18" [weight=2 style=invis]
 
     {
@@ -28,7 +29,7 @@ digraph branch {
 
     {
         rank = same
-        HEAD -> my_branch
-        my_branch -> "630d4e3"
+        HEAD -> my_branch [color=red]
+        my_branch -> "630d4e3" [color=red]
     }
 }

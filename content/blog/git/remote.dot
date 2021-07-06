@@ -37,7 +37,7 @@ digraph branch {
 
     {
         rank = same
-        remote_master -> "10498bd"
+        remote_master -> "10498bd" [color=red]
         master -> "10498bd" [constraint=false]
         HEAD -> master [constraint=false]
     }

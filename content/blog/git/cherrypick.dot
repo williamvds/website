@@ -15,7 +15,8 @@ digraph branch {
     "9147754" [label=<<font point-size="10">9147754</font><br/>First cherry-pick commit>]
     "cb3c9c2" [label=<<font point-size="10">cb3c9c2</font><br/>Second cherry-pick commit>]
     master_invis [style=invis]
-    "a9923b0" [label=<<font point-size="10">a9923b0</font><br/>Second cherry-pick commit>]
+    "a9923b0" [label=<<font point-size="10">a9923b0</font><br/>Second cherry-pick commit>
+        color=red]
 
     node [shape=none, margin=0.05, height=0]
     HEAD
@@ -51,7 +52,7 @@ digraph branch {
 
     {
         rank = same
-        HEAD -> cherrypick_to [constraint=false]
-        cherrypick_to -> "a9923b0" [constraint=false]
+        HEAD -> cherrypick_to [constraint=false color=red]
+        cherrypick_to -> "a9923b0" [constraint=false color=red]
     }
 }

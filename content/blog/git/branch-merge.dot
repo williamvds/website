@@ -10,7 +10,8 @@ digraph branch {
     "173bb18" [label=<<font point-size="10">173bb18</font><br/>Add file1.txt>]
     "630d4e3" [label=<<font point-size="10">630d4e3</font><br/>Commit on my-branch>]
     "0538d0d" [label=<<font point-size="10">0538d0d</font><br/>Commit on master>]
-    "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>]
+    "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>
+        color=red]
 
     node [shape=none, margin=0.05, height=0]
     HEAD
@@ -20,8 +21,8 @@ digraph branch {
 
     "630d4e3" -> "173bb18"
     "0538d0d" -> "173bb18" [weight=2]
-    "031b880" -> "630d4e3"
-    "031b880" -> "0538d0d" [weight=2]
+    "031b880" -> "630d4e3" [color=red]
+    "031b880" -> "0538d0d" [weight=2 color=red]
 
     {
         rank = same
@@ -38,6 +39,6 @@ digraph branch {
     {
         rank = same
         HEAD -> master [constraint=false]
-        master -> "031b880" [constraint=false]
+        master -> "031b880" [constraint=false color=red]
     }
 }

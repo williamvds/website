@@ -12,7 +12,8 @@ digraph branch {
     "0538d0d" [label=<<font point-size="10">0538d0d</font><br/>Commit on master>]
     "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>]
     "10498bd" [label=<<font point-size="10">10498bd</font><br/>Fast-forward commit>]
-    "3ce5c9d" [label=<<font point-size="10">3ce5c9d</font><br/>Rebase commit>]
+    "3ce5c9d" [label=<<font point-size="10">3ce5c9d</font><br/>Rebase commit>
+        color=red]
 
     node [shape=none margin=0.05 height=0]
     HEAD
@@ -30,7 +31,7 @@ digraph branch {
 
     "630d4e3" -> "173bb18"
     "031b880" -> "630d4e3"
-    "3ce5c9d" -> "10498bd"
+    "3ce5c9d" -> "10498bd" [color=red]
 
     {
         rank = same
@@ -45,6 +46,6 @@ digraph branch {
     {
         rank = same
         HEAD -> rebasing
-        rebasing -> "3ce5c9d"
+        rebasing -> "3ce5c9d" [color=red]
     }
 }

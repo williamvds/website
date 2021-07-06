@@ -12,8 +12,10 @@ digraph branch {
     "0538d0d" [label=<<font point-size="10">0538d0d</font><br/>Commit on master>]
     "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>]
     "10498bd" [label=<<font point-size="10">10498bd</font><br/>Fast-forward commit>]
-    "77a3551" [label=<<font point-size="10">77a3551</font><br/>WIP on master:<br/>10498bd Fast-forward commit>]
-    "943a226" [label=<<font point-size="10">943a226</font><br/>index on master:<br/>10498bd Fast-forward commit>]
+    "77a3551" [label=<<font point-size="10">77a3551</font><br/>WIP on master:<br/>10498bd Fast-forward commit>
+        color=red]
+    "943a226" [label=<<font point-size="10">943a226</font><br/>index on master:<br/>10498bd Fast-forward commit>
+        color=red]
 
     node [shape=none, margin=0.05, height=0]
     HEAD
@@ -27,13 +29,13 @@ digraph branch {
         "0538d0d" -> "173bb18"
         "031b880" -> "0538d0d"
         "10498bd" -> "031b880"
-        "77a3551" -> "10498bd"
+        "77a3551" -> "10498bd" [color=red]
     }
 
     "630d4e3" -> "173bb18"
     "031b880" -> "630d4e3"
-    "943a226" -> "10498bd"
-    "77a3551" -> "943a226"
+    "943a226" -> "10498bd" [color=red]
+    "77a3551" -> "943a226" [color=red]
 
     {
         rank = same
@@ -48,6 +50,6 @@ digraph branch {
 
     {
         rank = same
-        stash -> "77a3551" [constraint=false]
+        stash -> "77a3551" [constraint=false color=red]
     }
 }

@@ -12,8 +12,10 @@ digraph branch {
     "0538d0d" [label=<<font point-size="10">0538d0d</font><br/>Commit on master>]
     "031b880" [label=<<font point-size="10">031b880</font><br/>Merge my-branch into master>]
     "10498bd" [label=<<font point-size="10">10498bd</font><br/>Fast-forward commit>]
-    "9147754" [label=<<font point-size="10">9147754</font><br/>First cherry-pick commit>]
-    "cb3c9c2" [label=<<font point-size="10">cb3c9c2</font><br/>Second cherry-pick commit>]
+    "9147754" [label=<<font point-size="10">9147754</font><br/>First cherry-pick commit>
+        color=red]
+    "cb3c9c2" [label=<<font point-size="10">cb3c9c2</font><br/>Second cherry-pick commit>
+        color=red]
     master_invis [style=invis]
 
     node [shape=none, margin=0.05, height=0]
@@ -27,8 +29,8 @@ digraph branch {
     "031b880" -> "630d4e3"
     "031b880" -> "0538d0d" [weight=2]
     "10498bd" -> "031b880" [weight=2]
-    "9147754" -> "10498bd"
-    "cb3c9c2" -> "9147754"
+    "9147754" -> "10498bd" [color=red]
+    "cb3c9c2" -> "9147754" [color=red]
     master_invis -> "10498bd" [weight=2 style=invis]
 
     {
@@ -43,7 +45,7 @@ digraph branch {
 
     {
         rank = same
-        HEAD -> cherrypick_from [constraint=false]
-        cherrypick_from -> "cb3c9c2" [constraint=false]
+        HEAD -> cherrypick_from [constraint=false color=red]
+        cherrypick_from -> "cb3c9c2" [constraint=false color=red]
     }
 }
