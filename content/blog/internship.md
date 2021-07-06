@@ -39,7 +39,7 @@ and, unless you give consent to the contrary, you won't be expected to concern
 yourself with work outside those hours.
 
 Another motivator is receiving compensation. Knowing that you're being paid for
-your work makes it much easier to concentrate on and get your work day done.
+your work makes it much easier to concentrate and get your work day done.
 Additionally, having your own source of income after relying on others gives you
 additional independence and agency over your life. Earning some savings during
 your internship can provide an additional cushion to get you started once you
@@ -99,7 +99,7 @@ while, especially when you feel like you're not getting anywhere. In creative
 jobs, breaks give you a chance to reset, figure out different ways of
 approaching your work, and notice mistakes and missed avenues. It's not
 sustainable to apply your full effort at all times. When you have some down-time
-or feel like you need a break from your main task, swap to a less draining task
+or feel like you need a break from your main task, swap to a less draining one
 like writing documentation or doing some related reading.
 
 ## Keep in mind
@@ -110,7 +110,7 @@ both internship and permanent. Make sure that the compensation fully covers your
 living expenses and leaves a comfortable amount to spare. I'd strongly recommend
 against taking an unpaid position, especially a long-term one.
 
-Sadly private companies tend to offer salaries that are much lower than what
+Sadly, private companies tend to offer salaries that are much lower than what
 they'd offer a permanent candidate. I'd personally suggest being wary of
 internships that offer low salaries, especially if you're hoping for an offer
 for a permanent position after it is completed. A company that starts you off
@@ -124,8 +124,8 @@ tuition fee despite receiving almost no university work or contact hours.
 
 An internship should give you experience that you can directly apply in the
 field you're looking to work in after the internship. Be sure to check and ask
-about the responsibilities of the positions you're looking for, ensuring that
-they would be useful to you in the figure - try to find things you could to
+about the responsibilities of the positions you're looking at, ensuring that
+they would be useful to your career - try to find things you could to
 mention to prospective employers in the future. If find yourself regularly being
 tasked with menial work unrelated to your field, I'd suggest talking to your
 manager about it, and potentially leaving your internship if things don't
