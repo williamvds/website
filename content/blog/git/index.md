@@ -5,8 +5,7 @@ A Git tutorial for both beginners and existing users, revealing all the magic by
 starting from the underlying concepts that are often hidden away
 """
 slug="learning-git"
-date = 2021-05-15
-draft = true
+date = 2021-07-06
 
 [extra]
 table_of_contents = true
@@ -563,10 +562,6 @@ New lines are prefixed with `+`, and removed lines with `-`. If multiple parts
 of a file have been changed, the diff will group them into distinct _hunks_,
 which encapsulate changes in nearby lines, with some unchanged lines for
 additional context.
-
-<!-- TODO: look at
-http://www.gnu.org/software/diffutils/manual/html_node/Hunks.html for
-definition of hunk -->
 
 You can see that the diff references the staged blob for `file1.txt`, `1ed6543`,
 as well as a new blob name `ff709a8`. The new blob name is calculated from the
