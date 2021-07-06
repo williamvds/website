@@ -37,9 +37,9 @@ purpose which is discarded if they're used in a hacky name.
 
 Of course, this website is itself guilty of using a TLD in an unintended manner
 \- _.me_ is for Montenegro, but here it instead represents a personal website.
-This hack is commonly used to the point where the semantics of the TLD have been
-de-facto overloaded, so I thought it was an acceptable choice for my own
-personal website.
+This hack is so commonly used to the point that this alternate meaning for the
+TLD is widely accepted, and even [touted by the registrars](https://domain.me).
+Thus, I thought it was an acceptable choice for my own personal website.
 
 Ideally there would be an TLD that better applied to a generic personal website.
 There are some other TLDs I considered, before I eventually settled on _.me_ as
