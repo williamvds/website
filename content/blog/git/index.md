@@ -2737,9 +2737,6 @@ recommend checking out [Magit](https://magit.vc) or
   [YouTube](https://www.youtube.com/watch?v=MYP56QJpDr4), [Wayback
   Machine](https://web.archive.org/web/*/https://www.youtube.com/watch?v=MYP56QJpDr4)
 
-[^linux-mail-archives]: See archives of these mailing lists at
-  [lore.kernel.org](https://lore.kernel.org)
-
 [^gitglossary]: <https://git-scm.com/docs/gitglossary>
 
 [^git-sha256-switch]:
