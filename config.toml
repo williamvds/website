@@ -5,7 +5,8 @@ Personal website and blog of William Vigolo da Silva, a software developer
 base_url = "https://williamvds.me"
 compile_sass = true
 build_search_index = false
-generate_rss = true
+generate_feed = true
+feed_filename = "rss.xml"
 
 [markdown]
 highlight_code = true
