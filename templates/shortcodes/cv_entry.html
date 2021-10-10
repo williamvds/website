@@ -5,8 +5,8 @@
 		{% if date %}<h3 class=date>{{date | date(format=dateFmt)}}</h3>
 		{% elif start %}
 			<h3 class=date>{{start | date(format=dateFmt)}}
-			&nbsp;&ndash;&nbsp;
-			{%- if end -%}
+			&ndash;
+			{% if end -%}
 				{{end | date(format=dateFmt)}}
 			{%- else -%}Present {%-endif-%}
 			{%- if showDuration -%}
