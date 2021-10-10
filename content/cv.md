@@ -10,21 +10,23 @@ style = "cv.css"
 {% cv_skills() %}
 
 ### Software
-C++, C, Java, C# (dotnet), Python, PHP, JavaScript, Haskell
+C++, C, Java, C# (dotnet), Python, PHP, JavaScript, Haskell  
+
+CMake, Boost, Apache Kafka
 
 ### Version control
-Using Git, with GitHub and GitLab  
+Using Git, with GitHub, GitLab, and Bitbucket  
 Using SVN
 
 ### Web frontend
-With HTML(5), CSS  
+With HTML, CSS  
 Experience with Vue.js
 
 ### Platforms
-Windows, GNU/Linux, macOS, iOS
+GNU/Linux, Windows, macOS, iOS
 
 ### Databases
-Using SQL, with PostgreSQL, Microsoft SQL server, and MySQL
+Using SQL, with PostgreSQL, Microsoft SQL server, MySQL, and Oracle
 
 {% end %}
 
@@ -37,22 +39,30 @@ Using SQL, with PostgreSQL, Microsoft SQL server, and MySQL
 	url   = "https://sinara.com"
 	start = "2020-09-07"
 ) %}
-At Sinara I've been working on software for financial organisations, usually
-with the .NET frameworks, including ASP.NET and MSSQL.  
-I've gained experience using Visual Studio and other tools to develop for the
-Windows platform.
 
-Projects involved in:
+At Sinara, I'm working on software for financial organisations, particularly
+trading platforms and handling market data.
 
-- Market data feed handler: a highly concurrent system that handles multicast
-  network traffic. I was involved in:
-	- Developing tools to support development and testing: a tool for debugging
-	  multicast connectivity, a market data visualisation tool, and a
-	  controllable emulator of the system the handler connects to.
-	- Designing, implementing and performing tests, including unit and
-	  integration tests, as well as manual testing.
-	- Implementing functionality, and correcting issues that arose during
-	  development.
+- Developed a multicast market data feed handler in C# (.NET Framework)
+	- Created tools to support development and testing, including a market data
+	  emulator that could simulate different scenarios, and market data
+	  visualiser
+
+- Worked on a trading platform for a major trading exchange as part of a
+  technology modernisation project, developed in C++
+	- Assisted in the design and implementation features, integrating the
+	  platform with other systems within the exchange
+	- Improved the existing build environment, making the edit-compile-run
+	  loop significantly faster
+	- Introduced development tools for catching bugs, and fixed issues that were
+	  highlighted
+	- Contributed to a simple FIX trading client used as a development tool
+
+- Designed, implemented, and executed automated unit and integration tests, as
+  well as quality assurance tests
+
+- Wrote technical documentation to assist other developers, and user
+  documentation intended for users and administrators
 {% end %}
 
 {% cv_entry(
@@ -63,16 +73,38 @@ Projects involved in:
 	start = "2018-06-18"
 	end   = "2019-08-23"
 ) %}
+
 As a developer at Feral I worked on bringing more games to __macOS__ and
-__iOS__, including [Total War: Shogun 2](https://www.feralinteractive.com/en/games/shogun2tw), [Tropico](https://www.feralinteractive.com/en/mobile-games/tropico), and [Company of Heroes](https://www.feralinteractive.com/en/ios-games/companyofheroes).  
-By working on several large codebases I've gained the ability to jump into new
-projects and rapidly understand them; a skill that allows me to quickly start
-fixing bugs and implement new features.  
-Using __C++__ throughout my placement has earned me an in-depth understanding of
-it, which I've used to solve problems effectively on top of fixing issues such
-as cross-platform bugs and undefined behaviour.  
-I've learnt how to use __Xcode__ to develop for Apple platforms, and used
-__LLDB__ extensively to debug large applications and fix obscure bugs.
+__iOS__. 
+
+- Delivered the bulk of the 64-bit port of [Total War: Shogun 2 for
+  macOS](https://www.feralinteractive.com/en/games/shogun2tw), with similar
+  patches used to later port other games in the franchise
+
+- Assisted the release of [Tropico for
+  mobile](https://www.feralinteractive.com/en/mobile-games/tropico), primarily
+  working on the touch camera controls and improving performance
+
+- Was heavily involved in the development of [Company of Heroes for
+  iPad](https://www.feralinteractive.com/en/ios-games/companyofheroes),
+  implementing many of the controls and UI changes needed to bring the game to
+  touchscreens
+
+I jumped into several large codebases - including multiple game engines
+\- that were originally developed with Windows as the target platform.
+I learned how to pick up new projects and explore and understand
+them, being able to quickly start fixing bugs and implementing new features.
+
+Using __C++__ throughout my placement earned me a deeper understanding of the
+language, as I debugged and fixed cross-platform bugs including undefined
+behaviour.  
+To support development, I wrote a tools and libraries, including a generic
+library for real-time strategy touch camera controls which was used in both
+Tropico and Company of Heroes ports.
+
+Being the main IDE for Apple platforms, I used __Xcode__ throughout my
+placement, and also made extensive use of __LLDB__ to debug games
+and fix obscure bugs.
 {% end %}
 
 ## {{icon(icon="school")}} Education {#education}
@@ -108,8 +140,7 @@ Some exam results I'm proud of:
 	tech  = "C++ (17), CMake"
 ) %}
 A C++ emulator library for the 6502 microprocessor, aiming to make the best use
-of modern C++ and best practices.  
-(Work in progress).
+of modern C++ and best practices.
 {% end %}
 
 {% cv_project(
