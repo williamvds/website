@@ -39,6 +39,7 @@ printOnly = true
 name = "LinkedIn"
 url  = "https://linkedin.com/in/"
 icon = "linkedin-box"
+filter = ["cv"]
 
 [extra.accounts.github]
 name = "GitHub"

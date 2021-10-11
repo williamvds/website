@@ -25,6 +25,9 @@
 	</div>
 	<div id=accounts>
 		{% for k, a in config.extra.accounts %}
+			{% if a.filter is defined and a.filter is not containing("cv") %}
+				{% continue %}
+			{% endif %}
 			{{ macros::iconlink(
 				icon  = a.icon,
 				text  = a.name,
